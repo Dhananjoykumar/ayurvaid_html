@@ -1,0 +1,2052 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Lead DSQ Entry form</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- bootstrap.min.css file form netsuite file Cbinet - Bootstrap -->
+    <link href="/core/media/media.nl?id=8345&c=3373505&h=951c3db2bf21a87fc2ad&_xt=.css" rel="stylesheet">
+    <!-- font-awesome.css file form netsuite file Cbinet - Bootstrap -->
+    <!-- <link href="/core/media/media.nl?id=8346&c=3373505&h=fe37e040a0b4c5c926c5&_xt=.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- style.css file form netsuite file Cbinet - Bootstrap -->
+    <link href="/core/media/media.nl?id=8347&c=3373505&h=919b908012e3c94ef106&_xt=.css" rel="stylesheet">
+    <!-- jquery-1.11.1.min.js jQuery Bootstrap's JavaScript plugin-->
+    <script src="/core/media/media.nl?id=8348&c=3373505&h=696be706c9a5f8345916&_xt=.js"></script>
+    <!-- Bootstrap v3.4.1 (https://getbootstrap.com/) - CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous"> -->
+    <!-- jQuery v3.6.3 | (c) OpenJS Foundation and other contributors | jquery.org/license -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <!-- Bootstrap v3.4.1 (https://getbootstrap.com/) - JS -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script> -->
+
+</head>
+
+<body>
+    <NLFORM>
+        <div class="clearfix"></div>
+        <input type="hidden" id="dsqentryform" name="dsqentryform" value="leadDSQform_v1" />
+        <style>
+            ul#stepForm,
+            ul#stepForm li {
+                margin: 0;
+                padding: 0;
+            }
+        
+            ul#stepForm li {
+                list-style: none outside none;
+            }
+        
+        
+            label {
+                margin-top: 10px;
+            }
+        
+            .panel-title {
+                line-height: 1.0;
+            }
+        
+            legend h5 {
+                line-height: 1.8;
+                font-size: 15px;
+                font-weight: bold;
+            }
+        
+        
+            .help-inline-error {
+                color: red;
+            }
+        
+            input[type="radio"] {
+                margin: 2px 2px 0 10px;
+            }
+        
+            input[type="checkbox"] {
+                margin: 2px 5px 0 10px;
+            }
+        
+            .spinner {
+                border: 4px solid #f3f3f3;
+                border-top: 4px solid #3498db;
+                border-radius: 50%;
+                width: 30px;
+                height: 30px;
+                animation: spin 1s linear infinite;
+                margin: 0 auto;
+                margin-bottom: 10px;
+            }
+        
+            @keyframes spin {
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(360deg); }
+            }
+        </style>
+
+        <div class="container">
+            <div class="panel panel-primary">
+                <div class="panel-body">
+                    <div class="col-lg-4">
+                        <!--<img src="" width="77" height="80">-->
+                        <!--<img src="" height="80">-->
+                    </div>
+                    <div class="col-lg-6">
+
+                    </div>
+                    <div class="col-lg-2">
+                        <!--<img src="" width="203" height="80">-->
+                    </div>
+                </div>
+                <div class="panel-heading">
+                    <h3 class="panel-title">Diabetes Screening Questionnaire</h3>
+                </div>
+                <div class="panel-body">
+                    <!--DSQ 1 Start-->
+                    <div id="section1" class="frm">
+                        <fieldset>
+                            <legend class="bg-info">
+                                <h5 id="step-heading-pd"></h5>
+                            </legend>
+
+                            <div class="form-group" style="display:none">
+                                <div class="col-lg-6">
+                                    <label class="control-label" for="custrecord_dsq_patientid">Patient ID *</label>
+                                
+                                    <input type="text" placeholder="Patient ID" id="custrecord_dsq_patientid" name="custrecord_dsq_patientid"
+                                        class="form-control" autocomplete="off">
+                                </div>
+                                
+                                <!-- <div class="col-lg-12"></div> -->
+                            </div>
+
+                            <div class="form-group">
+
+                                <div class="col-lg-6">
+                                    <label class="control-label" for="custrecord_dsq_first_name">First Name * </label>
+                                    <input type="text" placeholder="Your First Name" id="custrecord_dsq_first_name"
+                                        name="custrecord_dsq_first_name" class="form-control" autocomplete="off"
+                                        required>
+                                    <!-- <NLCUSTRECORD__DSQ_FIRST_NAME> -->
+                                </div>
+
+                                <!-- DSQ ID * field_hidden-->
+                                <span style="display:none"> <NLNAME></span>
+                                <input type="hidden" id="name" name="name" />
+
+                                <div class="col-lg-6">
+                                    <label class="control-label" for="custrecord_dsq_last_name">Last Name * </label>
+                                    <input type="text" placeholder="Your Last Name" id="custrecord_dsq_last_name"
+                                        name="custrecord_dsq_last_name" class="form-control" autocomplete="off"
+                                        required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+
+                                <div class="col-lg-4">
+                                    <label class="control-label" for="custrecord_dsq_dob">Date of Birth</label>
+                                    <input type="date" placeholder="Date of Birth" id="custrecord_dsq_dob"
+                                        name="custrecord_dsq_dob" class="form-control" autocomplete="off">
+                                </div>
+                                <div class="col-lg-2">
+                                    <label class="control-label" for="custrecord_dsq_age">Age </label>
+                                    <input type="text" placeholder="Age" id="custrecord_dsq_age"
+                                        name="custrecord_dsq_age" class="form-control">
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-6">
+                                    <label class="control-label" for="custrecord_dsq_gender">Gender </label>
+                                </div>
+                                <div class="col-lg-6">
+                                    <label><input type="radio" id="custrecord_dsq_gender" name="custrecord_dsq_gender"
+                                            value="1">Male</label>
+                                    <label><input type="radio" id="custrecord_dsq_gender" name="custrecord_dsq_gender"
+                                            value="2">Female</label>
+                                    <label><input type="radio" id="custrecord_dsq_gender" name="custrecord_dsq_gender"
+                                            value="3">Transgender</label>
+                                </div>
+                                <!-- <div class="invalid-feedback" style="padding: left 20px;">Please select a gender.</div> -->
+                            </div>
+                            <div class="form-group">
+
+                                <div class="col-lg-6">
+                                    <label class="control-label" for="custrecord_dsq_mobile">Phone * </label>
+                                    <input type="text" placeholder="Phone" id="custrecord_dsq_mobile"
+                                        name="custrecord_dsq_mobile" class="form-control" autocomplete="off" required>
+                                    <!-- <NLCUSTRECORD_DSQ_MOBILE> -->
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <label class="control-label" for="custrecord_dsq_email">Email * </label>
+                                    <input type="text" placeholder="Email" id="custrecord_dsq_email"
+                                        name="custrecord_dsq_email" class="form-control" autocomplete="off" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+
+                                <div class="col-lg-12">
+                                    <label class="control-label" for="custrecord_dsq_diabetic_check">Are you Diabetic? *
+                                    </label>
+                                </div>
+                                <div class="col-lg-6">
+                                    <label><input type="radio" id="yes" name="custrecord_dsq_diabetic_check"
+                                            value="1">Yes</label>
+                                    <label><input type="radio" id="no" name="custrecord_dsq_diabetic_check"
+                                            value="2">No</label>
+                                    <label><input type="radio" id="dontknow" name="custrecord_dsq_diabetic_check"
+                                            value="3">Don't know</label>
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+
+                                <div class="col-lg-12">
+                                    Note: On submission of Diabetes Screening Questionnaire, the assessment will be sent
+                                    to
+                                    your email address and password to your phone number.
+                                </div>
+                            </div>
+
+                            <div class="clearfix" style="height: 10px;clear: both;"></div>
+
+
+                            <div class="form-group">
+                                <div class="col-lg-10 col-lg-offset-10">
+                                    <button type="button" class="btn btn-primary open1" id="ptntdtls-next-button1">Next
+                                        <span class="fa fa-arrow-right"></span></button>
+                                    <!-- <button type="button" class="btn btn-primary openOTPpopup" id="sendOtp-button1">
+                                        Send OTP <span class="fa fa-arrow-right"></span> </button> -->
+                                </div>
+                            </div>
+
+                        </fieldset>
+                    </div>
+                    <!-- DSQ 1 End-->
+                    <!-- PopUp Start-->
+                    <div class="container">
+                        <div class="modal" id="otppopup" role="dialog">
+                            <div class="modal-dialog modal-sm">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h5 class="modal-title">Verify OTP</h5>
+                                    </div>
+                                    <div class="modal-body">
+                                        <fieldset>
+                                            <div class="form-group">
+
+                                                <div class="col-lg-6" style="padding-left:5px;">
+                                                    <label class="control-label" for="custrecord_dsq_mobile_otp">Mobile
+                                                        OTP *: </label>
+                                                    <input type="text" placeholder="Mobile OTP"
+                                                        id="custrecord_dsq_mobile_otp" name="custrecord_dsq_mobile_otp"
+                                                        class="form-control" autocomplete="off" required>
+                                                </div>
+
+                                                <!-- <div class="col-lg-6" style="padding-left:5px;">
+                                                    <label class="control-label" for="custrecord_dsq_email_otp">Email OTP *: </label>
+                                                    <input type="text" placeholder="Email OTP" id="custrecord_dsq_email_otp"
+                                                        name="custrecord_dsq_email_otp" class="form-control" autocomplete="off">
+                                                </div> -->
+                                            </div>
+
+                                        </fieldset>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-primary varifyOTP">Verify OTP <span
+                                                class="fa fa-arrow-right"></span></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="frm" id="otppopup"
+                        style="display:none;position: fixed;top: 190px;left: 500px;border:1px solid black;width: 500px;height: 137px;background:white;z-index: 3">
+                    </div>
+
+                    <!-- PopUp End-->
+                    <!-- Risk 1 Start-->
+                    <div id="section2" class="frm" style="display: none;">
+                        <fieldset>
+                            <legend class="bg-info">
+                                <h5 id="step-heading-ra2"></h5>
+                            </legend>
+
+                            <div class="form-group">
+                                <div class="col-lg-2">
+                                    <label class="control-label" for="">Waist Circumference at Umblicus*</label>
+                                </div>
+
+                                <div class="col-lg-10">
+                                    <div class="radio">
+                                        <label><input type="radio" name="custrecord_waist_circumference" value="4">
+                                            Waist < 80 cm (Female), < 90 cm (Male) </label>
+                                    </div>
+                                    <div class="radio">
+                                        <label><input type="radio" name="custrecord_waist_circumference" value="5">
+                                            Waist 80-90 cm (Female), 90-100 cm (Male)
+                                        </label>
+                                    </div>
+                                    <div class="radio">
+                                        <label><input type="radio" name="custrecord_waist_circumference" value="6">
+                                            Waist > 90 cm (Female), > 100 cm (Male) </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-2">
+                                    <label class="control-label" for="">Family History</label>
+                                </div>
+
+                                <div class="col-lg-10">
+                                    <div class="radio">
+                                        <label><input type="radio" name="custrecord_family_history" value="1">Neither
+                                            Parent is diabetic</label>
+                                    </div>
+                                    <div class="radio">
+                                        <label><input type="radio" name="custrecord_family_history" value="4">
+                                            Grandparent / Aunt / Uncle or First Cousin (but no parent / brother /
+                                            sister)
+                                        </label>
+                                    </div>
+                                    <div class="radio">
+                                        <label><input type="radio" name="custrecord_family_history" value="5">
+                                            One Parent / brother / sister is diabetic
+                                        </label>
+                                    </div>
+                                    <div class="radio">
+                                        <label><input type="radio" name="custrecord_family_history" value="6">
+                                            Both Parents are diabetic / atleast one grandparent and one parent is
+                                            diabetic
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-2">
+                                    <label class="control-label" for="">
+                                        Physical Activity Level
+                                    </label>
+                                </div>
+
+                                <div class="col-lg-10">
+                                    <div class="radio">
+                                        <label><input type="radio" name="custrecord_physical_activity" value="5">
+                                            Regular exercise more than 4 times a week / > 30 min per day
+                                        </label>
+                                    </div>
+                                    <div class="radio">
+                                        <label><input type="radio" name="custrecord_physical_activity" value="6">
+                                            Regular exercise less than 4 times a week
+                                        </label>
+                                    </div>
+                                    <div class="radio">
+                                        <label><input type="radio" name="custrecord_physical_activity" value="7">
+                                            Routine household work / mild physical activity at workplace
+                                        </label>
+                                    </div>
+                                    <div class="radio">
+                                        <label><input type="radio" name="custrecord_physical_activity" value="8">
+                                            No exercise and / or sedentary lifestyle / day sleep > 30 min
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix" style="height: 10px;clear: both;"></div>
+                            <div class="clearfix" style="height: 10px;clear: both;"></div>
+                            <div class="form-group">
+                                <div class="col-lg-10 col-lg-offset-2">
+                                    <button class="btn btn-warning back2" type="button" id="risk1-back-button1"><span
+                                            class="fa fa-arrow-left"></span>
+                                        Back</button>
+                                    <button type="button" class="btn btn-primary open2" id="risk1-next-button2">Next
+                                        <span class="fa fa-arrow-right"></span></button>
+                                </div>
+                            </div>
+
+                        </fieldset>
+                    </div>
+                    <!--Risk 1 End-->
+                    <!--Risk 2 Start-->
+                    <div id="section3" class="frm" style="display: none;">
+                        <fieldset>
+                            <legend class="bg-info">
+                                <h5 id="step-heading-ra3"></h5>
+                            </legend>
+
+                            <div class="form-group">
+                                <div class="col-lg-2">
+                                    <label class="control-label" for="">Excess Food Intake</label>
+                                </div>
+
+                                <div class="col-lg-10">
+                                    <div class="radio">
+                                        <label><input type="radio" name="custrecord_excess_food_intake" value="6">
+                                            Achieve
+                                            Satiety (feeling full) easily with moderate quantities of food</label>
+                                    </div>
+                                    <div class="radio">
+                                        <label><input type="radio" name="custrecord_excess_food_intake"
+                                                value="7">Achieve Satiety (feeling
+                                            full) with difficulty even with considerable higher food intake compared to
+                                            earlier</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-2">
+                                    <label class="control-label" for="">Food Type</label>
+                                </div>
+
+                                <div class="col-lg-10">
+                                    <div class="checkbox">
+                                        <label><input type="checkbox" name="custrecord_dsq_food_type" value="1">Craving
+                                            for junk food (soft
+                                            drinks,fries,chips), food with refined flour, sugar, meat, curd more than
+                                            3-4 times/week</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="clearfix" style="height: 10px;clear: both;"></div>
+
+                            <div class="form-group">
+                                <div class="col-lg-10 col-lg-offset-2">
+                                    <button class="btn btn-warning back3" type="button" id="risk2-back-button2"><span
+                                            class="fa fa-arrow-left"></span>
+                                        Back</button>
+                                    <button class="btn btn-primary open3" type="button" id="risk2-next-button3">Next
+                                        <span class="fa fa-arrow-right"></span></button>
+                                </div>
+                            </div>
+
+                        </fieldset>
+                    </div>
+                    <!--Risk 2 End-->
+                    <!--Risk 3 Start-->
+                    <div id="section4" class="frm" style="display: none;">
+                        <fieldset>
+                            <legend class="bg-info">
+                                <h5 id="step-heading-ra4"></h5>
+                            </legend>
+
+                            <div class="form-group">
+                                <div class="col-lg-12">
+                                    <label class="control-label font-weight-bold" for=""><mark>Other Factors (Select any
+                                            / all
+                                            that is applicable):</mark></label>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-lg-6">
+                                    <label class="control-label" for="">Diagnosed with Heart Problem</label>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <label><input type="radio" name="custrecord_diagnosedbp" value="2"> No</label>
+                                    <label><input type="radio" name="custrecord_diagnosedbp" value="1"> Yes</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-6">
+                                    <label class="control-label" for="">Diagnosed with Hypertension / High TGL / Low
+                                        LDL</label>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <label><input type="radio" name="custrecord_diagnosedht" value="2"> No</label>
+                                    <label><input type="radio" name="custrecord_diagnosedht" value="1"> Yes</label>
+                                </div>
+                            </div>
+                            <!-- Show only for female  -->
+                            <div class="form-group" id="pcos-section" style="display: none;">
+                                <div class="col-lg-6">
+                                    <label class="control-label" for="">Diagnosed with PCOS or Irregular menstruation or
+                                        Gestational Diabetes?</label>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <label><input type="radio" name="custrecord_diagnosedpcod" value="2"> No</label>
+                                    <label><input type="radio" name="custrecord_diagnosedpcod" value="1"> Yes</label>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-lg-6">
+                                    <label class="control-label" for="">Diagnosed with Hypothyroidism</label>
+                                </div>
+                                <div class="col-lg-6">
+                                    <label><input type="radio" name="custrecord_diagnosedhypo" value="2"> No</label>
+                                    <label><input type="radio" name="custrecord_diagnosedhypo" value="1"> Yes</label>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-lg-6">
+                                    <label class="control-label" for="">Previous positive Impaired Glucose Tolerance
+                                        (IGT)?</label>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <label><input type="radio" name="custrecord_diagnosedigt" value="2"> No</label>
+                                    <label><input type="radio" name="custrecord_diagnosedigt" value="1"> Yes</label>
+                                </div>
+                            </div>
+                            <!-- <div class="clearfix" style="height: 10px;clear: both;"></div> -->
+                            <div class="form-group">
+                                <div class="col-lg-6">
+                                    <label class="control-label" for="custrecord_steroids">Have you consumed any
+                                        antipsychotic medicine or
+                                        corticosteroids or Diuretics for more than 2-6 months?</label>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <label><input type="radio" name="custrecord_steroids" value="2">
+                                        No</label>
+                                    <label><input type="radio" name="custrecord_steroids" value="1"> Yes</label>
+                                </div>
+                            </div>
+
+                            <!-- Show only for female -->
+                            <div class="clearfix" style="height: 8px;clear: both;"></div>
+                            <div class="form-group" id="menopause-section" style="display: none;">
+                                <div class="col-lg-6">
+                                    <label class="control-label" for="">Have you had your menopause / Hysterectomy with
+                                        or
+                                        without removal
+                                        of ovaries</label>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <label><input type="radio" name="custrecord_diagnosedmeno" value="2"> No</label>
+                                    <label><input type="radio" name="custrecord_diagnosedmeno" value="1"> Yes</label>
+                                </div>
+                            </div>
+
+
+                            <div class="clearfix" style="height: 10px;clear: both;"></div>
+
+                            <div class="form-group">
+                                <div class="col-lg-10 col-lg-offset-2" id="btncontainer">
+                                    <button class="btn btn-warning back4" type="button" id="risk3-back-button3"><span
+                                            class="fa fa-arrow-left"></span>Back</button>
+                                    <button class="btn btn-primary open5" type="button"
+                                        id="risk3-next-button4">Next<span class="fa fa-arrow-right"></span></button>
+
+                                </div>
+                            </div>
+
+                        </fieldset>
+                    </div>
+                    <!--Risk 3 End-->
+                    <!--Severity 1 Start-->
+                    <div id="section5" class="frm" style="display: none;">
+                        <fieldset>
+                            <legend class="bg-info">
+                                <h5 id="step-heading-sa1"></h5>
+                            </legend>
+
+                            <div class="form-group">
+                                <div class="col-lg-5">
+                                    <label class="control-label font-weight-bold">Diabetes Type * </label>
+                                </div>
+                                <div class="col-lg-7">
+                                    <label><input type="radio" name="custrecord_dsq_summary" value="2"> Type1 </label>
+                                    <label><input type="radio" name="custrecord_dsq_summary" value="3"> Type2 </label>
+                                    <label><input type="radio" name="custrecord_dsq_summary" value="4"> Gestational
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="clearfix" style="height: 10px;clear: both;"></div>
+
+                            <div class="form-group">
+                                <div class="col-lg-5">
+                                    <label class="control-label font-weight-bold"> At what age you were diagnosed?
+                                        (Mention in Yrs) </label>
+                                </div>
+                                <div class="col-lg-7">
+                                    <input type="text" placeholder="Age of diagnosed" id="custrecord_age_of_diagnosis"
+                                        name="custrecord_age_of_diagnosis" class="form-control">
+                                </div>
+                            </div>
+                            <div class="clearfix" style="height: 10px;clear: both;"></div>
+
+                            <div class="form-group">
+                                <div class="col-lg-5">
+                                    <label class="control-label">Current Medication? Select that all applies</label>
+                                </div>
+                                <div class="col-lg-7">
+                                    <label><input type="checkbox" name="custrecord_currentmedication"
+                                            value="1">Diet</label>
+                                    <label><input type="checkbox" name="custrecord_currentmedication"
+                                            value="2">Exercise</label>
+                                    <label><input type="checkbox" name="custrecord_currentmedication"
+                                            value="3">Insulin</label>
+                                    <label><input type="checkbox" name="custrecord_currentmedication" value="4">Oral
+                                        Medication</label>
+                                </div>
+                            </div>
+                            <div class="clearfix" style="height: 10px;clear: both;"></div>
+
+
+                            <div class="form-group">
+                                <div class="col-lg-5">
+                                    <label class="control-label font-weight-bold"> Mention other medications, if any
+                                    </label>
+                                </div>
+                                <div class="col-lg-7">
+                                    <input type="text" placeholder="Other Medication" id="custrecord_othermedication"
+                                        name="custrecord_othermedication" class="form-control">
+                                </div>
+                            </div>
+                            <div class="clearfix" style="height: 10px;clear: both;"></div>
+
+                            <div class="form-group">
+                                <div class="col-lg-5">
+                                    <label class="control-label font-weight-bold">Your satisfaction with current
+                                        treatment (0 being poor satisfaction and 5 being highly satisfied) </label>
+                                </div>
+                                <div class="col-lg-7">
+                                    <label><input type="radio" name="custrecord_dsq_satisfaction" value="1"> Zero
+                                    </label>&nbsp;&nbsp;
+                                    <label><input type="radio" name="custrecord_dsq_satisfaction" value="2"> 1
+                                    </label>&nbsp;&nbsp;
+                                    <label><input type="radio" name="custrecord_dsq_satisfaction" value="3"> 2
+                                    </label>&nbsp;&nbsp;
+                                    <label><input type="radio" name="custrecord_dsq_satisfaction" value="4"> 3
+                                    </label>&nbsp;&nbsp;
+                                    <label><input type="radio" name="custrecord_dsq_satisfaction" value="5"> 4
+                                    </label>&nbsp;&nbsp;
+                                    <label><input type="radio" name="custrecord_dsq_satisfaction" value="6"> 5
+                                    </label>&nbsp;&nbsp;
+                                </div>
+                            </div>
+                            <div class="clearfix" style="height: 10px;clear: both;"></div>
+
+                            <div class="form-group">
+                                <div class="col-lg-10 col-lg-offset-2">
+                                    <button class="btn btn-warning back5" type="button"
+                                        id="severity1-back-button1"><span class="fa fa-arrow-left"></span>
+                                        Back</button>
+                                    <button class="btn btn-primary open5" type="button" id="severity1-next-button2">Next
+                                        <span class="fa fa-arrow-right"></span></button>
+                                </div>
+                            </div>
+
+                        </fieldset>
+                    </div>
+                    <!--Severity 1 End-->
+                    <!--Severity 2 Start-->
+                    <div id="section6" class="frm" style="display: none;">
+                        <fieldset>
+                            <legend class="bg-info">
+                                <h5 id="step-heading-sa2"></h5>
+                            </legend>
+
+                            <div class="form-group">
+                                <div class="col-lg-5">
+                                    <label class="control-label">Current HbA1C Score?</label>
+                                </div>
+                                <div class="col-lg-7">
+                                    <input type="text" placeholder="" id="custrecord_current_hba1c_score"
+                                        name="custrecord_current_hba1c_score" class="form-control" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="clearfix" style="height: 10px;clear: both;"></div>
+
+                            <div class="form-group">
+                                <div class="col-lg-5">
+                                    <label class="control-label">Current FBS Score?</label>
+                                </div>
+                                <div class="col-lg-7">
+                                    <input type="text" placeholder="" id="custrecord5" name="custrecord5"
+                                        class="form-control" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="clearfix" style="height: 10px;clear: both;"></div>
+
+                            <div class="form-group">
+                                <div class="col-lg-5">
+                                    <label class="control-label">What are the difficulties faced currently? (Select all
+                                        that applies)</label>
+                                </div>
+                                <div class="col-lg-7">
+                                    <label><input type="checkbox" name="custrecord72" value="1">Sudden weight
+                                        loss</label>
+                                    <label><input type="checkbox" name="custrecord72" value="2">Constipation</label>
+                                    <label><input type="checkbox" name="custrecord72" value="3">Poor vision</label>
+                                    <label><input type="checkbox" name="custrecord72" value="4">Frozen shoulder</label>
+                                    <label><input type="checkbox" name="custrecord72" value="5">Erectile
+                                        dysfunction</label>
+                                    <label><input type="checkbox" name="custrecord72" value="6">Skin problems/Wound Slow
+                                        Healing</label>
+                                    <label><input type="checkbox" name="custrecord72" value="7" id="otherCheckbox">Other</label>
+                                </div>
+                            </div>
+                            <div class="clearfix" style="height: 10px;clear: both;"></div>
+
+                            <div class="form-group">
+                                <div class="col-lg-5">
+                                    <label class="control-label">Mention other dificulties faced if any</label>
+                                </div>
+                                <div class="col-lg-7">
+                                    <input type="text" placeholder="Other Dificulties" id="custrecord_otherdifficulties"
+                                        name="custrecord_otherdifficulties" class="form-control">
+                                </div>
+                            </div>
+                            <div class="clearfix" style="height: 10px;clear: both;"></div>
+
+                            <div class="form-group">
+                                <div class="col-lg-10 col-lg-offset-2">
+                                    <button class="btn btn-warning back5" type="button"
+                                        id="severity2-back-button2"><span class="fa fa-arrow-left"></span>
+                                        Back</button>
+                                    <button class="btn btn-primary open5" type="button" id="severity2-next-button3">Next
+                                        <span class="fa fa-arrow-right"></span></button>
+                                </div>
+                            </div>
+
+                        </fieldset>
+                    </div>
+                    <!--Severity 2 End-->
+
+                    <!--Severity 3 Start-->
+                    <div id="section7" class="frm" style="display: none;">
+                        <fieldset>
+                            <legend class="bg-info">
+                                <h5 id="step-heading-sa3"></h5>
+                            </legend>
+                            <div class="clearfix" style="height: 5px;clear: both;"></div>
+                            <div class="form-group">
+                                <div class="col-lg-12">
+                                    <label class="control-label font-weight-bold" for=""><mark>Lethargy:</mark></label>
+                                </div>
+                            </div>
+                            <div class="clearfix" style="height: 5px;clear: both;"></div>
+                            <div class="form-group">
+                                <div class="col-lg-6">
+                                    <label class="control-label" for="">Do you feel tired even without much
+                                        exertion?</label>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <label><input type="radio" name="custrecord_tiredness" value="2">
+                                        No</label>
+                                    <label><input type="radio" name="custrecord_tiredness" value="1"> Yes</label>
+                                </div>
+                            </div>
+                            <div class="clearfix" style="height: 10px;clear: both;"></div>
+                            <div class="form-group">
+                                <div class="col-lg-6">
+                                    <label class="control-label" for="">Do you often feel mentally dull/lazy?</label>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <label><input type="radio" name="custrecord_dsq_lethargy_mental" value="2">
+                                        No</label>
+                                    <label><input type="radio" name="custrecord_dsq_lethargy_mental" value="1">
+                                        Yes</label>
+                                </div>
+                            </div>
+                            <div class="clearfix" style="height: 10px;clear: both;"></div>
+                            <div class="form-group">
+                                <div class="col-lg-6">
+                                    <label class="control-label" for="">Often desire to sit, sleep, lie down?</label>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <label><input type="radio" name="custrecord_dsq_laziness" value="2"> No</label>
+                                    <label><input type="radio" name="custrecord_dsq_laziness" value="1"> Yes</label>
+                                </div>
+                            </div>
+
+
+                            <div class="clearfix" style="height: 10px;clear: both;"></div>
+
+                            <div class="form-group">
+                                <div class="col-lg-10 col-lg-offset-2">
+                                    <button class="btn btn-warning back6" type="button"
+                                        id="severity3-back-button3"><span class="fa fa-arrow-left"></span>
+                                        Back</button>
+                                    <button class="btn btn-primary open6" type="button" id="severity3-next-button4">Next
+                                        <span class="fa fa-arrow-right"></span></button>
+                                </div>
+                            </div>
+
+                        </fieldset>
+                    </div>
+                    <!--Severity 3 End-->
+                    <!--Severity 4 Start-->
+                    <div id="section8" class="frm" style="display: none;">
+                        <fieldset>
+                            <legend class="bg-info">
+                                <h5 id="step-heading-sa4"></h5>
+                            </legend>
+                            <div class="clearfix" style="height: 5px;clear: both;"></div>
+                            <div class="form-group">
+                                <div class="col-lg-12">
+                                    <label class="control-label font-weight-bold" for=""><mark>Urine:</mark></label>
+                                </div>
+                            </div>
+                            <div class="clearfix" style="height: 5px;clear: both;"></div>
+                            <div class="form-group">
+                                <div class="col-lg-6">
+                                    <label class="control-label" for="">Turbid and fruity odour to urine?</label>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <label><input type="radio" name="custrecord_dsq_urine_turbid" value="2"> No</label>
+                                    <label><input type="radio" name="custrecord_dsq_urine_turbid" value="1"> Yes</label>
+                                </div>
+                            </div>
+                            <div class="clearfix" style="height: 10px;clear: both;"></div>
+                            <div class="form-group">
+                                <div class="col-lg-6">
+                                    <label class="control-label" for="">Milky white colour of urine / frothy</label>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <label><input type="radio" name="custrecord_dsq_urine_color" value="2"> No</label>
+                                    <label><input type="radio" name="custrecord_dsq_urine_color" value="1"> Yes</label>
+                                </div>
+                            </div>
+                            <div class="clearfix" style="height: 10px;clear: both;"></div>
+                            <div class="form-group">
+                                <div class="col-lg-6">
+                                    <label class="control-label" for="">Quantity of urine / micturition disproportionate
+                                        with fluid
+                                        intake?</label>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <label><input type="radio" name="custrecord_dsq_urine_quantity" value="2">
+                                        No</label>
+                                    <label><input type="radio" name="custrecord_dsq_urine_quantity" value="1">
+                                        Yes</label>
+                                </div>
+                            </div>
+                            <div class="clearfix" style="height: 10px;clear: both;"></div>
+                            <div class="form-group">
+                                <div class="col-lg-6">
+                                    <label class="control-label" for="">History of repeated urinary infective conditions
+                                        /
+                                        abnormalities?</label>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <label><input type="radio" name="custrecord_dsq_urine_history" value="2"> No</label>
+                                    <label><input type="radio" name="custrecord_dsq_urine_history" value="1">
+                                        Yes</label>
+                                </div>
+                            </div>
+                            <div class="clearfix" style="height: 10px;clear: both;"></div>
+                            <div class="form-group">
+                                <div class="col-lg-6">
+                                    <label class="control-label" for="">Frequency of urination</label>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <label><input type="radio" name="custrecord_dsq_frequency_unrine" value="3"> Day
+                                        >
+                                        8 </label>
+                                    <label><input type="radio" name="custrecord_dsq_frequency_unrine" value="2">
+                                        Night >
+                                        2 </label>
+                                    <label><input type="radio" name="custrecord_dsq_frequency_unrine" value="4">
+                                        Neither </label>
+                                </div>
+                            </div>
+
+
+                            <div class="clearfix" style="height: 10px;clear: both;"></div>
+
+                            <div class="form-group">
+                                <div class="col-lg-10 col-lg-offset-2">
+                                    <button class="btn btn-warning back7" type="button"
+                                        id="severity4-back-button4"><span class="fa fa-arrow-left"></span>
+                                        Back</button>
+                                    <button class="btn btn-primary open7" type="button" id="severity4-next-button5">Next
+                                        <span class="fa fa-arrow-right"></span></button>
+                                </div>
+                            </div>
+
+                        </fieldset>
+                    </div>
+                    <!--Severity 4 End -->
+                    <!--Severity 5 Start -->
+                    <div id="section9" class="frm" style="display: none;">
+                        <fieldset>
+                            <legend class="bg-info">
+                                <h5 id="step-heading-sa5"></h5>
+                            </legend>
+                            <!-- <div class="clearfix" style="height: 10px;clear: both;"></div> -->
+                            <div class="form-group">
+                                <div class="col-lg-12">
+                                    <label class="control-label font-weight-bold" for=""><mark>Physiological
+                                            Status:</mark></label>
+                                </div>
+                            </div>
+                            <div class="clearfix" style="height: 10px;clear: both;"></div>
+                            <div class="form-group">
+                                <div class="col-lg-6">
+                                    <label class="control-label" for="">Sweet taste in mouth?</label>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <label><input type="radio" name="custrecord_dsq_sweet_taste_in_mouth" value="2">
+                                        No</label>
+                                    <label><input type="radio" name="custrecord_dsq_sweet_taste_in_mouth" value="1">
+                                        Yes</label>
+                                </div>
+                            </div>
+                            <div class="clearfix" style="height: 10px;clear: both;"></div>
+                            <div class="form-group">
+                                <div class="col-lg-6">
+                                    <label class="control-label" for="">Body odour?</label>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <label><input type="radio" name="custrecord_dsq_body_odour" value="2"> No</label>
+                                    <label><input type="radio" name="custrecord_dsq_body_odour" value="1"> Yes</label>
+                                </div>
+                            </div>
+                            <div class="clearfix" style="height: 10px;clear: both;"></div>
+                            <div class="form-group">
+                                <div class="col-lg-6">
+                                    <label class="control-label" for="">Mouth dryness / throat dryness?</label>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <label><input type="radio" name="custrecord_mouth_dryness" value="2"> No</label>
+                                    <label><input type="radio" name="custrecord_mouth_dryness" value="1"> Yes</label>
+                                </div>
+                            </div>
+                            <div class="clearfix" style="height: 10px;clear: both;"></div>
+                            <div class="form-group">
+                                <div class="col-lg-6">
+                                    <label class="control-label" for="">Burning sensation in palm/sole?</label>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <label><input type="radio" name="custrecord_dsq_burning_sensation" value="2">
+                                        No</label>
+                                    <label><input type="radio" name="custrecord_dsq_burning_sensation" value="1">
+                                        Yes</label>
+                                </div>
+                            </div>
+                            <div class="clearfix" style="height: 10px;clear: both;"></div>
+                            <div class="form-group">
+                                <div class="col-lg-6">
+                                    <label class="control-label" for="">Excessive thirst / water intake? (>
+                                        2L/day)</label>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <label><input type="radio" name="custrecord_dsq_thirst" value="2">
+                                        No</label>
+                                    <label><input type="radio" name="custrecord_dsq_thirst" value="1"> Yes</label>
+                                </div>
+                            </div>
+                            <div class="clearfix" style="height: 10px;clear: both;"></div>
+                            <div class="form-group">
+                                <div class="col-lg-6">
+                                    <label class="control-label" for="">Excessive food intake/eating?</label>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <label><input type="radio" name="custrecord_dsq_foodintake" value="2"> No</label>
+                                    <label><input type="radio" name="custrecord_dsq_foodintake" value="1"> Yes</label>
+                                </div>
+                            </div>
+                            <div class="clearfix" style="height: 10px;clear: both;"></div>
+                            <div class="form-group">
+                                <div class="col-lg-6">
+                                    <label class="control-label" for="">Excessive sweat?</label>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <label><input type="radio" name="custrecord_dsq_excessive_sweat" value="2">
+                                        No</label>
+                                    <label><input type="radio" name="custrecord_dsq_excessive_sweat" value="1">
+                                        Yes</label>
+                                </div>
+                            </div>
+                            <div class="clearfix" style="height: 10px;clear: both;"></div>
+                            <div class="form-group">
+                                <div class="col-lg-6">
+                                    <label class="control-label" for="">Desire for Cold?</label>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <label><input type="radio" name="custrecord_dsq_desire_for_cold" value="2">
+                                        No</label>
+                                    <label><input type="radio" name="custrecord_dsq_desire_for_cold" value="1">
+                                        Yes</label>
+                                </div>
+                            </div>
+                            <div class="clearfix" style="height: 10px;clear: both;"></div>
+                            <div class="form-group">
+                                <div class="col-lg-6">
+                                    <label class="control-label" for="">Bad Breath?</label>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <label><input type="radio" name="custrecord_dsq_bad_breath" value="2"> No</label>
+                                    <label><input type="radio" name="custrecord_dsq_bad_breath" value="1"> Yes</label>
+                                </div>
+                            </div>
+
+
+                            <div class="clearfix" style="height: 10px;clear: both;"></div>
+
+                            <div class="form-group">
+                                <div class="col-lg-10 col-lg-offset-2">
+                                    <button class="btn btn-warning back8" type="button"
+                                        id="severity5-back-button5"><span class="fa fa-arrow-left"></span>
+                                        Back</button>
+                                    <button class="btn btn-primary open8" type="button" id="severity5-next-button6">Next
+                                        <span class="fa fa-arrow-right"></span></button>
+                                </div>
+                            </div>
+
+                        </fieldset>
+                    </div>
+                    <!--Severity 5 End -->
+                    <!--Severity 6 Start -->
+                    <div id="section10" class="frm" style="display: none;">
+                        <fieldset>
+                            <legend class="bg-info">
+                                <h5 id="step-heading-sa6"></h5>
+                            </legend>
+
+                            <div class="form-group">
+                                <div class="col-lg-12">
+                                    <label class="control-label font-weight-bold" for=""><mark>Physical
+                                            Status:</mark></label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-6">
+                                    <label class="control-label" for="">Fast growth of nails and hair?</label>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <label><input type="radio" name="custrecord_dsq_fast_growth" value="2"> No</label>
+                                    <label><input type="radio" name="custrecord_dsq_fast_growth" value="1"> Yes</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-6">
+                                    <label class="control-label" for="">Body heaviness?</label>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <label><input type="radio" name="custrecord_dsq_lethargy" value="2"> No</label>
+                                    <label><input type="radio" name="custrecord_dsq_lethargy" value="1"> Yes</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-6">
+                                    <label class="control-label" for="">Sticky and knotty hair?</label>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <label><input type="radio" name="custrecord_dsq_sticky_hair" value="2"> No</label>
+                                    <label><input type="radio" name="custrecord_dsq_sticky_hair" value="1"> Yes</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-6">
+                                    <label class="control-label" for="">Stickiness in eyes / ears / teeth / tongue
+                                    </label>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <label><input type="radio" name="custrecord_dsq_stickiness_eyes" value="2">
+                                        No</label>
+                                    <label><input type="radio" name="custrecord_dsq_stickiness_eyes" value="1">
+                                        Yes</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-6">
+                                    <label class="control-label" for="">Looseness or flaccidity in the body</label>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <label><input type="radio" name="custrecord_dsq_looseness" value="2"> No</label>
+                                    <label><input type="radio" name="custrecord_dsq_looseness" value="1"> Yes</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-6">
+                                    <label class="control-label" for="">Unexplained Weight gain or loss in last 3 months
+                                        without change in
+                                        food habits or exercise/activity pattern?</label>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <label><input type="radio" name="custrecord_dsq_weightloss" value="2"> No</label>
+                                    <label><input type="radio" name="custrecord_dsq_weightloss" value="1"> Yes</label>
+                                </div>
+                            </div>
+
+                            <div class="clearfix" style="height: 10px;clear: both;"></div>
+
+                            <div class="form-group">
+                                <div class="col-lg-10 col-lg-offset-2">
+                                    <button class="btn btn-warning back9" type="button"
+                                        id="severity6-back-button6"><span class="fa fa-arrow-left"></span>
+                                        Back</button>
+                                    <button class="btn btn-primary open9" type="button" id="severity6-next-button7">Next
+                                        <span class="fa fa-arrow-right"></span></button>
+                                </div>
+                            </div>
+
+                        </fieldset>
+                    </div>
+                    <!--Severity 6 -->
+                    <!--Severity 7 -->
+                    <div id="section11" class="frm" style="display: none;">
+                        <fieldset>
+                            <legend class="bg-info">
+                                <h5 id="step-heading-sa7"></h5>
+                            </legend>
+
+                            <div class="form-group">
+                                <div class="col-lg-12">
+                                    <label class="control-label font-weight-bold" for=""><mark>Numbness / Non Healing
+                                            Wound or
+                                            Ulcer:</mark></label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-6">
+                                    <label class="control-label" for="">Numbness in both hands and/or both
+                                        soles?</label>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <label><input type="radio" name="custrecord_dsq_num_palm" value="2"> No</label>
+                                    <label><input type="radio" name="custrecord_dsq_num_palm" value="1"> Yes</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-6">
+                                    <label class="control-label" for="">Numbness in Whole body?</label>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <label><input type="radio" name="custrecord_dsq_numb_whole" value="2"> No</label>
+                                    <label><input type="radio" name="custrecord_dsq_numb_whole" value="1"> Yes</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-6">
+                                    <label class="control-label" for="">Non healing wound / ulcer?</label>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <label><input type="radio" name="custrecord_dsq_nonheal" value="2"> No</label>
+                                    <label><input type="radio" name="custrecord_dsq_nonheal" value="1"> Yes</label>
+                                </div>
+                            </div>
+
+                            <div class="clearfix" style="height: 10px;clear: both;"></div>
+
+                            <div class="form-group">
+                                <div class="col-lg-10 col-lg-offset-2">
+                                    <button class="btn btn-warning back10" type="button"
+                                        id="severity7-back-button7"><span class="fa fa-arrow-left"></span>
+                                        Back</button>
+                                    <input type="submit" class=" btn btn-primary" id="diabetesSubmit" value="Submit" />
+                                    <div id="spinnerContainer" style="display: none;">
+                                        <div class="spinner"></div>
+                                        <p>Please Wait...</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </fieldset>
+                    </div>
+                    <!--Severity 7 End-->
+                </div>
+            </div>
+
+
+        </div>
+        <!--jquery.validate.js file import from NetSuite fileCabinet-->
+        <script type="text/javascript"
+            src="/core/media/media.nl?id=8349&c=3373505&h=a51bfcafb63bb9f59e28&_xt=.js"></script>
+        <script type="text/javascript">
+
+            $(document).ready(function () {
+
+                $("#step-heading-pd").text('Patient Details (Step 1)');
+
+                // Validation logic here
+                var validateDsq = jQuery("#main_form").validate({
+                    rules: {
+                        custrecord_dsq_first_name: {
+                            required: true,
+                            minlength: 1,
+                            maxlength: 16
+                        },
+                        custrecord_dsq_last_name: {
+                            required: true,
+                            minlength: 1,
+                            maxlength: 16
+                        },
+                        custrecord_dsq_dob: {
+                            required: true
+                        },
+                        custrecord_dsq_age: {
+                            required: true
+                        },
+                        custrecord_dsq_gender: {
+                            required: true
+                        },
+                        custrecord_dsq_mobile: {
+                            required: true,
+                            minlength: 10,
+                        },
+                        custrecord_dsq_email: {
+                            required: true,
+                            minlength: 2,
+                            email: true,
+                            maxlength: 100,
+                        },
+                        custrecord_dsq_diabetic_check: {
+                            required: true
+                        }
+                    },
+                    errorElement: "span",
+                    errorClass: "help-inline-error",
+                    errorPlacement: function (error, element) {
+                        if (element.attr("name") == "custrecord_dsq_gender") {
+                            error.insertAfter("label[for='custrecord_dsq_gender']");
+                        }
+                        else if (element.attr("name") == "custrecord_dsq_diabetic_check") {
+                            error.insertAfter("label[for='custrecord_dsq_diabetic_check']");
+                        }
+                        else {
+                            error.insertAfter(element);
+                        }
+                    }
+                });
+
+                // =================== Set age by DOB Start ====================
+                $("#custrecord_dsq_dob").change(function () {
+
+                    var custrecord_dsq_dob = new Date($(this).val());
+                    var today = new Date();
+                    var dobYear = custrecord_dsq_dob.getFullYear();
+                    var currentYear = today.getFullYear();
+                    if (currentYear > dobYear) {
+                        //var age = Math.floor((today - dob) / (365.25 * 24 * 60 * 60 * 1000));
+                        var age = currentYear - dobYear;
+                        $("#custrecord_dsq_age").val(age);
+                    } else {
+                        $(this).val('');
+                        $("#custrecord_dsq_age").val('');
+                        alert('The selected year should be less than the current year.');
+                    }
+
+                });
+                // =================== Set age by DOB End ====================
+                
+                // =================== Set DOB by age Start ====================
+                $("#custrecord_dsq_age").change(function () {
+                    var age = parseInt($("#custrecord_dsq_age").val()); // parse the age value as an integer
+                    var today = new Date();
+                    var birthYear = today.getFullYear() - age; // calculate the birth year
+                    // Validate that age is at least 1 year
+                    if (age < 1) {
+                        alert("Age must be at least 1 year.");
+                        $("#custrecord_dsq_age").val(""); // clear the age field
+                        return; // exit the function
+                    }
+                    var custrecord_dsq_dob = new Date(birthYear, today.getMonth(), today.getDate()); // create a new date object with the calculated birth year
+                    // format the date in the desired format (e.g. YYYY-MM-DD)
+                    var formattedDate = custrecord_dsq_dob.getFullYear() + '-' +
+                        ('0' + (custrecord_dsq_dob.getMonth() + 1)).slice(-2) + '-' +
+                        ('0' + custrecord_dsq_dob.getDate()).slice(-2);
+
+                    $("#custrecord_dsq_dob").val(formattedDate); // set the calculated date in the "custrecord_dsq_dob" field
+                });
+                // =================== Set DOB by age End ====================
+
+                $("#diabetesSubmit").click(function (evt) {
+                    evt.stopPropagation();
+                    // severity 7 section 11
+                    var numbnessHandsSoles = $("input[name='custrecord_dsq_num_palm']:checked").val();
+                    var numbnessWholeBody = $("input[name='custrecord_dsq_numb_whole']:checked").val();
+                    var nonHealingWoundUlcer = $("input[name='custrecord_dsq_nonheal']:checked").val();
+                    if (!numbnessHandsSoles || !numbnessWholeBody || !nonHealingWoundUlcer) {
+                        alert('Please select all options in Severity 7 section before submitting.');
+                        return false;
+                    } else {
+                        console.log("areyoudiabetic:", areyoudiabetic);
+                        console.log("genderValue:", genderValue);
+                        console.log("waistCircumference:", waistCircumference);
+                        console.log("familyHistory:", familyHistory);
+                        console.log("physicalActivity:", physicalActivity);
+                        console.log("excessFoodIntake:", excessFoodIntake);
+                        console.log("foodType:", foodType);
+                        console.log("diagnosedbp:", diagnosedbp);
+                        console.log("diagnosedht:", diagnosedht);
+                        console.log("diagnosedpcod:", diagnosedpcod);
+                        console.log("diagnosedhypo:", diagnosedhypo);
+                        console.log("diagnosedigt:", diagnosedigt);
+                        console.log("steroids:", steroids);
+                        console.log("diagnosedmeno:", diagnosedmeno);
+                        console.log("diabetesType:", diabetesType);
+                        console.log("ageOfDiagnosis:", ageOfDiagnosis);
+                        console.log("currentMedication:", currentMedication);
+                        console.log("otherMedication:", otherMedication);
+                        console.log("satisfaction:", satisfaction);
+                        console.log("currentHbA1CScore:", currentHbA1CScore);
+                        console.log("currentFBSScore:", currentFBSScore);
+                        console.log("difficultiesFaced:", difficultiesFaced);
+                        console.log("otherDifficulties:", otherDifficulties);
+                        console.log("tiredness:", tiredness);
+                        console.log("mentalDullness:", mentalDullness);
+                        console.log("desireToSit:", desireToSit);
+                        console.log("urineTurbidity:", urineTurbidity);
+                        console.log("urineColor:", urineColor);
+                        console.log("urineQuantity:", urineQuantity);
+                        console.log("urineHistory:", urineHistory);
+                        console.log("urineFrequency:", urineFrequency);
+                        console.log("sweetTaste:", sweetTaste);
+                        console.log("bodyOdor:", bodyOdor);
+                        console.log("mouthDryness:", mouthDryness);
+                        console.log("burningSensation:", burningSensation);
+                        console.log("excessiveThirst:", excessiveThirst);
+                        console.log("excessiveFoodIntake:", excessiveFoodIntake);
+                        console.log("excessiveSweat:", excessiveSweat);
+                        console.log("desireForCold:", desireForCold);
+                        console.log("badBreath:", badBreath);
+                        console.log("fastHairNailGrowth:", fastHairNailGrowth);
+                        console.log("bodyHeaviness:", bodyHeaviness);
+                        console.log("stickyKnottyHair:", stickyKnottyHair);
+                        console.log("stickinessInBody:", stickinessInBody);
+                        console.log("bodyLooseness:", bodyLooseness);
+                        console.log("unexplainedWeightChange:", unexplainedWeightChange);
+                        console.log("numbnessHandsSoles:", numbnessHandsSoles);
+                        console.log("numbnessWholeBody:", numbnessWholeBody);
+                        console.log("nonHealingWoundUlcer:", nonHealingWoundUlcer);
+
+                        $('#diabetesSubmit').prop('disabled', true);
+                        $("#severity7-back-button7").hide();
+                        $('#spinnerContainer').show();
+                        setTimeout(function () {
+                            $('#diabetesSubmit').prop('disabled', false);
+                            $('#spinnerContainer').hide(); // Hide the spinner
+                        }, 3000);
+
+                        return true;
+                    }
+
+                });
+
+                // ============================================================
+
+
+                var otp = '';
+                $(".openOTPpopup").click(function () {
+                    if (validateDsq.form()) {
+                        var digits = '0123456789';
+                        var otpLength = 6;
+                        for (var i = 1; i <= otpLength; i++) {
+                            var index = Math.floor(Math.random() * (digits.length));
+                            otp = otp + digits[index];
+                        }
+                        alert('Your OTP is ' + otp)
+                        $('#otppopup').modal('show');
+                    }
+                });
+
+                // ===================== Screens Show/Hide acc. to areyoudiabetic Start ====================
+
+                //$(".varifyOTP").click(function () {
+                $("#ptntdtls-next-button1").click(function () {
+                    //debugger
+                    //var enteredMOtp = $("#custrecord_dsq_mobile_otp").val();
+                    //var enteredEOtp = $("#custrecord_dsq_email_otp").val();
+
+                    //if (enteredMOtp == otp) {
+                    if (validateDsq.form()) {
+                        $('#otppopup').modal('hide');
+                        var patientid = $("#custrecord_dsq_patientid").val();
+                        console.log('patientid :' +patientid);
+                        
+                        // ============================= check If AVH-DSQ Submitted Within30Days Start =============================
+                        var fname = $("#custrecord_dsq_first_name").val();
+                        var phone = $("#custrecord_dsq_mobile").val();
+                        var url = "https://3373505.extforms.netsuite.com/app/site/hosting/scriptlet.nl?script=209&deploy=1&compid=3373505&h=15e645929d036e337332";
+                        url += "&custparam_phone=" + phone;
+                        url += "&custparam_fname=" + fname;
+                        var response = nlapiRequestURL(url);
+                        var responseObj = JSON.parse(response.body);
+                        console.log(responseObj);
+                        if (responseObj != "" && responseObj != null) {
+                            debugger
+                            var avhDSQcreatedDateArray = [];
+                            for (var i = 0; responseObj != null && i < responseObj.length; i++) {
+                                var recordData = JSON.parse(responseObj[i]);
+                                var dsqID = recordData.dsqId;
+                                var patientId = recordData.patientId;
+                                var prospectName = recordData.prospectName;
+                                var avhDSQcreatedDate = recordData.avhDSQcreatedDate;
+
+                                avhDSQcreatedDateArray.push(avhDSQcreatedDate);
+                            }
+                            avhDSQcreatedDateArray.sort(function (a, b) {
+                                return (a < b) ? 1 : ((b < a) ? -1 : 0); // sort in descending order so that the latest date is the first element of the array. 
+                            });
+                            var latestDSQcreatedDate = avhDSQcreatedDateArray[0];
+                            console.log('latestDSQcreatedDate ' + latestDSQcreatedDate);
+                            if (latestDSQcreatedDate) {
+                                // Comparing whether the patient submitted Assesment within last One Month from today's date.			
+                                var latestDateCreated = new Date(latestDSQcreatedDate);
+                                var today = new Date(); // Ex. date format ( Wed May 03 2023 04:47:23 GMT-0700 (PDT) )
+                                var oneDayInMs = 24 * 60 * 60 * 1000; // one day in milliseconds
+
+                                var daysDifference = Math.floor((today - latestDateCreated) / oneDayInMs); // Convert to days
+                                console.log('Days difference of todays & DSQ Submitted Date', daysDifference);
+
+                                if (daysDifference <= 30) {
+
+                                    alert('You have already submitted\nDSQ Questionnaire on ' + latestDateCreated.toDateString() + '\nPlease Consult a Doctor.');
+
+                                    return false;
+                                } else {
+                                    return true;
+                                }
+                            }
+                        }
+                        // ============================= check If AVH-DSQ Submitted Within30Days End =============================
+                        var areyoudiabetic = $("input[name='custrecord_dsq_diabetic_check']:checked").val();
+                        var genderValue = $("input[name='custrecord_dsq_gender']:checked").val();
+                        console.log('genderValue : '+genderValue);
+                        // Hiding and showing #pcos-section and #menopause-section according to gender selection.(Should show these two lebels for Female selected.)
+                        if (genderValue == '2') {
+                            $("#menopause-section").show();
+                            $('#pcos-section').show();
+                        } else {
+                            $("#menopause-section").hide();
+                            $('#pcos-section').hide();
+                        }
+
+                        // Screens Showing and hiding process, according to For "Are you Diabetic?" prompt, 
+                        // If "Yes", then navigate to Sec1-1, Sec1-2, Sec3-Sev1 through Sec3-Sev6.
+                        // If "No" and "Don't Know", then navigate to Sec2-Risk1, Sec2-Risk2, Sec2-Risk3, Sec3-Sev1 through Sec3-Sev6.
+                        //debugger
+                        if (areyoudiabetic == "1") {
+                            $("#section1").hide();
+                            $("#section5").show();
+                            $("#step-heading-sa1").text('Severity Assessment (Step 2 of 8)');
+
+                            // Next Buttons Logic
+                            $("#severity1-next-button2").click(function (evt) {
+                                evt.stopPropagation();
+                                // severity 1 section 5     
+                                var diabetesType = $("input[name='custrecord_dsq_summary']:checked").val();
+                                var ageOfDiagnosis = $("#custrecord_age_of_diagnosis").val();
+                                var currentMedication = $("input[name='custrecord_currentmedication']:checked").length > 0;
+                                var otherMedication = $("#custrecord_othermedication").val();
+                                var satisfaction = $("input[name='custrecord_dsq_satisfaction']:checked").val();
+                                if (!diabetesType || (!ageOfDiagnosis || ageOfDiagnosis === "" || isNaN(ageOfDiagnosis)) || currentMedication == false || !satisfaction) {
+                                    alert('Please select all options in severity 1 section before proceeding.');
+                                    return false;
+                                } else {
+                                    $("#section5").hide();
+                                    $("#section6").show();
+                                    $("#step-heading-sa2").text('Severity Assessment (Step 3 of 8)');
+                                    return true;
+                                }
+                            });
+                            $("#severity2-next-button3").click(function (evt) {
+                                evt.stopPropagation();
+                                // severity 2 section 6
+                                var currentHbA1CScore = $("#custrecord_current_hba1c_score").val();
+                                var currentFBSScore = $("#custrecord5").val();
+                                var difficultiesFaced = $("input[name='custrecord72']:checked").length > 0;
+                                var otherDifficulties = $("#custrecord_otherdifficulties").val();
+                                var otherIschecked = $("#otherCheckbox").is(":checked");
+
+                                if (difficultiesFaced == true) {
+                                    if (otherIschecked == true && !otherDifficulties) {
+                                        alert('Please mention other difficulties in Severity 2 section before proceeding.');
+                                        return false;
+                                    } else {
+                                        $("#section6").hide();
+                                        $("#section7").show();
+                                        $("#step-heading-sa3").text('Severity Assessment (Step 4 of 8)');
+                                        return true;
+                                    }
+                                } else {
+                                    alert('Please fill difficulties faced in Severity 2 section before proceeding.');
+                                    return false;
+                                }
+
+                            });
+                            $("#severity3-next-button4").click(function (evt) {
+                                evt.stopPropagation();
+                                // severity 3 section 7
+                                var tiredness = $("input[name='custrecord_tiredness']:checked").val();
+                                var mentalDullness = $("input[name='custrecord_dsq_lethargy_mental']:checked").val();
+                                var desireToSit = $("input[name='custrecord_dsq_laziness']:checked").val();
+                                if (!tiredness || !mentalDullness || !desireToSit) {
+                                    alert('Please select all options in Severity 3 section before proceeding.');
+                                    return false;
+                                } else {
+                                    $("#section7").hide();
+                                    $("#section8").show();
+                                    $("#step-heading-sa4").text('Severity Assessment (Step 5 of 8)');
+                                    return true;
+                                }
+                            });
+                            $("#severity4-next-button5").click(function (evt) {
+                                evt.stopPropagation();
+                                // Severity 4 section 8
+                                var urineTurbidity = $("input[name='custrecord_dsq_urine_turbid']:checked").val();
+                                var urineColor = $("input[name='custrecord_dsq_urine_color']:checked").val();
+                                var urineQuantity = $("input[name='custrecord_dsq_urine_quantity']:checked").val();
+                                var urineHistory = $("input[name='custrecord_dsq_urine_history']:checked").val();
+                                var urineFrequency = $("input[name='custrecord_dsq_frequency_unrine']:checked").val();
+                                if (!urineTurbidity || !urineColor || !urineQuantity || !urineHistory || !urineFrequency) {
+                                    alert('Please select all options in Severity 4 section before proceeding.');
+                                    return false;
+                                } else {
+                                    $("#section8").hide();
+                                    $("#section9").show();
+                                    $("#step-heading-sa5").text('Severity Assessment (Step 6 of 8)');
+                                    return true;
+                                }
+
+                            });
+                            $("#severity5-next-button6").click(function (evt) {
+                                evt.stopPropagation();
+                                // severity 5 section 9
+                                var sweetTaste = $("input[name='custrecord_dsq_sweet_taste_in_mouth']:checked").val();
+                                var bodyOdor = $("input[name='custrecord_dsq_body_odour']:checked").val();
+                                var mouthDryness = $("input[name='custrecord_mouth_dryness']:checked").val();
+                                var burningSensation = $("input[name='custrecord_dsq_burning_sensation']:checked").val();
+                                var excessiveThirst = $("input[name='custrecord_dsq_thirst']:checked").val();
+                                var excessiveFoodIntake = $("input[name='custrecord_dsq_foodintake']:checked").val();
+                                var excessiveSweat = $("input[name='custrecord_dsq_excessive_sweat']:checked").val();
+                                var desireForCold = $("input[name='custrecord_dsq_desire_for_cold']:checked").val();
+                                var badBreath = $("input[name='custrecord_dsq_bad_breath']:checked").val();
+
+                                if (!sweetTaste || !bodyOdor || !mouthDryness || !burningSensation || !excessiveThirst || !excessiveFoodIntake || !excessiveSweat || !desireForCold || !badBreath) {
+                                    alert('Please select all options in Severity 5 section before proceeding.');
+                                    return false;
+                                } else {
+                                    $("#section9").hide();
+                                    $("#section10").show();
+                                    $("#step-heading-sa6").text('Severity Assessment (Step 7 of 8)');
+                                    return true;
+                                }
+                            });
+                            $("#severity6-next-button7").click(function (evt) {
+                                evt.stopPropagation();
+                                // Severity 6 section 10
+                                var fastHairNailGrowth = $("input[name='custrecord_dsq_fast_growth']:checked").val();
+                                var bodyHeaviness = $("input[name='custrecord_dsq_lethargy']:checked").val();
+                                var stickyKnottyHair = $("input[name='custrecord_dsq_sticky_hair']:checked").val();
+                                var stickinessInBody = $("input[name='custrecord_dsq_stickiness_eyes']:checked").val();
+                                var bodyLooseness = $("input[name='custrecord_dsq_looseness']:checked").val();
+                                var unexplainedWeightChange = $("input[name='custrecord_dsq_weightloss']:checked").val();
+
+                                if (!fastHairNailGrowth || !bodyHeaviness || !stickyKnottyHair || !stickinessInBody || !bodyLooseness || !unexplainedWeightChange) {
+                                    alert('Please select all options in Severity 6 section before proceeding.');
+                                    return false;
+                                } else {
+                                    $("#section10").hide();
+                                    $("#section11").show();
+                                    $("#step-heading-sa7").text('Severity Assessment (Step 8 of 8)');
+                                    return true;
+                                }
+                            });
+                            
+                            // debugger
+                            $("#diabetesSubmit").click(function (evt) {
+                                evt.stopPropagation();
+                                // severity 7 section 11
+                                var numbnessHandsSoles = $("input[name='custrecord_dsq_num_palm']:checked").val();
+                                var numbnessWholeBody = $("input[name='custrecord_dsq_numb_whole']:checked").val();
+                                var nonHealingWoundUlcer = $("input[name='custrecord_dsq_nonheal']:checked").val();
+
+                                if (!numbnessHandsSoles || !numbnessWholeBody || !nonHealingWoundUlcer) {
+                                    alert('Please select all options in Severity 7 section before submitting.');
+                                    return false;
+                                } else {
+
+                                    $('#diabetesSubmit').prop('disabled', true);
+                                    $("#severity7-back-button7").hide();
+                                    $('#spinnerContainer').show();
+                                    setTimeout(function () {
+                                        $('#diabetesSubmit').prop('disabled', false);
+                                        $('#spinnerContainer').hide(); // Hide the spinner
+                                    }, 3000);
+
+                                    console.log("areyoudiabetic:", areyoudiabetic);
+                                    console.log("genderValue:", genderValue);
+                                    console.log("waistCircumference:", waistCircumference);
+                                    console.log("familyHistory:", familyHistory);
+                                    console.log("physicalActivity:", physicalActivity);
+                                    console.log("excessFoodIntake:", excessFoodIntake);
+                                    console.log("foodType:", foodType);
+                                    console.log("diagnosedbp:", diagnosedbp);
+                                    console.log("diagnosedht:", diagnosedht);
+                                    console.log("diagnosedpcod:", diagnosedpcod);
+                                    console.log("diagnosedhypo:", diagnosedhypo);
+                                    console.log("diagnosedigt:", diagnosedigt);
+                                    console.log("steroids:", steroids);
+                                    console.log("diagnosedmeno:", diagnosedmeno);
+                                    console.log("diabetesType:", diabetesType);
+                                    console.log("ageOfDiagnosis:", ageOfDiagnosis);
+                                    console.log("currentMedication:", currentMedication);
+                                    console.log("otherMedication:", otherMedication);
+                                    console.log("satisfaction:", satisfaction);
+                                    console.log("currentHbA1CScore:", currentHbA1CScore);
+                                    console.log("currentFBSScore:", currentFBSScore);
+                                    console.log("difficultiesFaced:", difficultiesFaced);
+                                    console.log("otherDifficulties:", otherDifficulties);
+                                    console.log("tiredness:", tiredness);
+                                    console.log("mentalDullness:", mentalDullness);
+                                    console.log("desireToSit:", desireToSit);
+                                    console.log("urineTurbidity:", urineTurbidity);
+                                    console.log("urineColor:", urineColor);
+                                    console.log("urineQuantity:", urineQuantity);
+                                    console.log("urineHistory:", urineHistory);
+                                    console.log("urineFrequency:", urineFrequency);
+                                    console.log("sweetTaste:", sweetTaste);
+                                    console.log("bodyOdor:", bodyOdor);
+                                    console.log("mouthDryness:", mouthDryness);
+                                    console.log("burningSensation:", burningSensation);
+                                    console.log("excessiveThirst:", excessiveThirst);
+                                    console.log("excessiveFoodIntake:", excessiveFoodIntake);
+                                    console.log("excessiveSweat:", excessiveSweat);
+                                    console.log("desireForCold:", desireForCold);
+                                    console.log("badBreath:", badBreath);
+                                    console.log("fastHairNailGrowth:", fastHairNailGrowth);
+                                    console.log("bodyHeaviness:", bodyHeaviness);
+                                    console.log("stickyKnottyHair:", stickyKnottyHair);
+                                    console.log("stickinessInBody:", stickinessInBody);
+                                    console.log("bodyLooseness:", bodyLooseness);
+                                    console.log("unexplainedWeightChange:", unexplainedWeightChange);
+                                    console.log("numbnessHandsSoles:", numbnessHandsSoles);
+                                    console.log("numbnessWholeBody:", numbnessWholeBody);
+                                    console.log("nonHealingWoundUlcer:", nonHealingWoundUlcer);
+                                    
+                                    return true;
+                                }
+                            });
+
+                            // Back Buttons Logic
+                            $("#severity1-back-button1").click(function () {
+                                // Reset variable values to empty
+                                resetVariables();
+                                $("#section5").hide();
+                                $("#section1").show();
+                            });
+                            $("#severity2-back-button2").click(function () {
+                                $("#section6").hide();
+                                $("#section5").show();
+                            });
+                            $("#severity3-back-button3").click(function () {
+                                $("#section7").hide();
+                                $("#section6").show();
+                            });
+                            $("#severity4-back-button4").click(function () {
+                                $("#section8").hide();
+                                $("#section7").show();
+                            });
+                            $("#severity5-back-button5").click(function () {
+                                $("#section9").hide();
+                                $("#section8").show();
+                            });
+                            $("#severity6-back-button6").click(function () {
+                                $("#section10").hide();
+                                $("#section9").show();
+                            });
+                            $("#severity7-back-button7").click(function () {
+                                $("#section11").hide();
+                                $("#section10").show();
+                            });
+
+                        }
+                        else if (areyoudiabetic == "2" || areyoudiabetic == "3") {
+
+                            $("#section1").hide();
+                            $("#section2").show();
+                            $("#step-heading-ra2").text('Risk Assessment (Step 2 of 9)')
+                            $("#riskSubmit").hide();
+
+                            // Next Buttons Logic
+                            $("#risk1-next-button2").click(function (evt) {
+                                evt.stopPropagation();
+                                // Risk 1 section 2
+                                var waistCircumference = $('input[name="custrecord_waist_circumference"]:checked').val();
+                                var familyHistory = $('input[name="custrecord_family_history"]:checked').val();
+                                var physicalActivity = $('input[name="custrecord_physical_activity"]:checked').val();
+                                // validation for Risk 1 section
+                                if (!waistCircumference || !familyHistory || !physicalActivity) {
+                                    alert('Please select all options in Risk 1 section before proceeding.');
+                                    return false; // Prevent next section
+                                } else {
+                                    $("#section2").hide();
+                                    $("#section3").show();
+                                    $("#step-heading-ra3").text('Risk Assessment (Step 3 of 9)')
+                                    return true;
+                                }
+                            });
+                            $("#risk2-next-button3").click(function (evt) {
+                                evt.stopPropagation();
+                                // Risk 2 section 3
+                                var excessFoodIntake = $('input[name="custrecord_excess_food_intake"]:checked').val();
+                                var foodType = $('input[name="custrecord_dsq_food_type"]:checked').val();                                // validation for Risk 2 section
+                                if (!excessFoodIntake) {
+                                    alert('Please select Excess Food Intake in Risk 2 section before proceeding.');
+                                    return false;
+                                } else {
+                                    $("#section3").hide();
+                                    $("#section4").show();
+                                    $("#step-heading-ra4").text('Risk Assessment (Step 4 of 9)')
+                                    return true;
+                                }
+                            });
+
+                            $("#risk3-next-button4").click(function (evt) {
+                                evt.stopPropagation();
+                                // Risk 3 section 4
+                                var diagnosedbp = $('input[name="custrecord_diagnosedbp"]:checked').val();
+                                var diagnosedht = $('input[name="custrecord_diagnosedht"]:checked').val();
+                                var diagnosedpcod = $('input[name="custrecord_diagnosedpcod"]:checked').val();
+                                var diagnosedhypo = $('input[name="custrecord_diagnosedhypo"]:checked').val();
+                                var diagnosedigt = $('input[name="custrecord_diagnosedigt"]:checked').val();
+                                var steroids = $('input[name="custrecord_steroids"]:checked').val();
+                                var diagnosedmeno = $('input[name="custrecord_diagnosedmeno"]:checked').val();
+                                // validation for Risk 3 section
+                                if (!diagnosedbp || !diagnosedht || ($('#pcos-section').is(':visible') && !diagnosedpcod) || !diagnosedhypo || !diagnosedigt || !steroids || ($('#menopause-section').is(':visible') && !diagnosedmeno)) {
+                                    alert('Please select all options in Risk 3 section before proceeding.');
+                                    return false;
+                                } else {
+                                    $("#section4").hide();
+                                    $("#section7").show();
+                                    $("#step-heading-sa3").text('Severity Assessment (Step 5 of 9)')
+                                    return true;
+                                }
+                            });
+
+                            $("#severity3-next-button4").click(function (evt) {
+                                evt.stopPropagation();
+                                // severity 3 section 7
+                                var tiredness = $("input[name='custrecord_tiredness']:checked").val();
+                                var mentalDullness = $("input[name='custrecord_dsq_lethargy_mental']:checked").val();
+                                var desireToSit = $("input[name='custrecord_dsq_laziness']:checked").val();
+                                if (!tiredness || !mentalDullness || !desireToSit) {
+                                    alert('Please select all options in Severity 3 section before proceeding.');
+                                    return false;
+                                } else {
+                                    $("#section7").hide();
+                                    $("#section8").show();
+                                    $("#step-heading-sa4").text('Severity Assessment (Step 6 of 9)')
+                                    return true;
+                                }
+                            });
+                            $("#severity4-next-button5").click(function (evt) {
+                                evt.stopPropagation();
+                                // Severity 4 section 8
+                                var urineTurbidity = $("input[name='custrecord_dsq_urine_turbid']:checked").val();
+                                var urineColor = $("input[name='custrecord_dsq_urine_color']:checked").val();
+                                var urineQuantity = $("input[name='custrecord_dsq_urine_quantity']:checked").val();
+                                var urineHistory = $("input[name='custrecord_dsq_urine_history']:checked").val();
+                                var urineFrequency = $("input[name='custrecord_dsq_frequency_unrine']:checked").val();
+
+                                if (!urineTurbidity || !urineColor || !urineQuantity || !urineHistory || !urineFrequency) {
+                                    alert('Please select all options in Severity 4 section before proceeding.');
+                                    return false;
+                                } else {
+                                    $("#section8").hide();
+                                    $("#section9").show();
+                                    $("#step-heading-sa5").text('Severity Assessment (Step 7 of 9)')
+                                    return true;
+                                }
+                            });
+                            $("#severity5-next-button6").click(function (evt) {
+                                evt.stopPropagation();
+                                // severity 5 section 9
+                                var sweetTaste = $("input[name='custrecord_dsq_sweet_taste_in_mouth']:checked").val();
+                                var bodyOdor = $("input[name='custrecord_dsq_body_odour']:checked").val();
+                                var mouthDryness = $("input[name='custrecord_mouth_dryness']:checked").val();
+                                var burningSensation = $("input[name='custrecord_dsq_burning_sensation']:checked").val();
+                                var excessiveThirst = $("input[name='custrecord_dsq_thirst']:checked").val();
+                                var excessiveFoodIntake = $("input[name='custrecord_dsq_foodintake']:checked").val();
+                                var excessiveSweat = $("input[name='custrecord_dsq_excessive_sweat']:checked").val();
+                                var desireForCold = $("input[name='custrecord_dsq_desire_for_cold']:checked").val();
+                                var badBreath = $("input[name='custrecord_dsq_bad_breath']:checked").val();
+
+                                if (!sweetTaste || !bodyOdor || !mouthDryness || !burningSensation || !excessiveThirst || !excessiveFoodIntake || !excessiveSweat || !desireForCold || !badBreath) {
+                                    alert('Please select all options in Severity 5 section before proceeding.');
+                                    return false;
+                                } else {
+                                    $("#section9").hide();
+                                    $("#section10").show();
+                                    $("#step-heading-sa6").text('Severity Assessment (Step 8 of 9)')
+                                    return true;
+                                }
+                            });
+                            $("#severity6-next-button7").click(function (evt) {
+                                evt.stopPropagation();
+                                // Severity 6 section 10
+                                var fastHairNailGrowth = $("input[name='custrecord_dsq_fast_growth']:checked").val();
+                                var bodyHeaviness = $("input[name='custrecord_dsq_lethargy']:checked").val();
+                                var stickyKnottyHair = $("input[name='custrecord_dsq_sticky_hair']:checked").val();
+                                var stickinessInBody = $("input[name='custrecord_dsq_stickiness_eyes']:checked").val();
+                                var bodyLooseness = $("input[name='custrecord_dsq_looseness']:checked").val();
+                                var unexplainedWeightChange = $("input[name='custrecord_dsq_weightloss']:checked").val();
+                                if (!fastHairNailGrowth || !bodyHeaviness || !stickyKnottyHair || !stickinessInBody || !bodyLooseness || !unexplainedWeightChange) {
+                                    alert('Please select all options in Severity 6 section before proceeding.');
+                                    return false;
+                                } else {
+                                    $("#section10").hide();
+                                    $("#section11").show();
+                                    $("#step-heading-sa7").text('Severity Assessment (Step 9 of 9)')
+                                    return true;
+                                }
+                            });
+
+                            $("#diabetesSubmit").click(function (evt) {
+                                evt.stopPropagation();
+                                // severity 7 section 11
+                                var numbnessHandsSoles = $("input[name='custrecord_dsq_num_palm']:checked").val();
+                                var numbnessWholeBody = $("input[name='custrecord_dsq_numb_whole']:checked").val();
+                                var nonHealingWoundUlcer = $("input[name='custrecord_dsq_nonheal']:checked").val();
+                                if (!numbnessHandsSoles || !numbnessWholeBody || !nonHealingWoundUlcer) {
+                                    alert('Please select all options in Severity 7 section before submitting.');
+                                    return false;
+                                } else {
+                                    $('#diabetesSubmit').prop('disabled', true);
+                                    $("#severity7-back-button7").hide();
+                                    $('#spinnerContainer').show();
+                                    setTimeout(function () {
+                                        $('#diabetesSubmit').prop('disabled', false);
+                                        $('#spinnerContainer').hide(); // Hide the spinner
+                                    }, 3000);
+                                    
+                                    console.log("areyoudiabetic:", areyoudiabetic);
+                                    console.log("genderValue:", genderValue);
+                                    console.log("waistCircumference:", waistCircumference);
+                                    console.log("familyHistory:", familyHistory);
+                                    console.log("physicalActivity:", physicalActivity);
+                                    console.log("excessFoodIntake:", excessFoodIntake);
+                                    console.log("foodType:", foodType);
+                                    console.log("diagnosedbp:", diagnosedbp);
+                                    console.log("diagnosedht:", diagnosedht);
+                                    console.log("diagnosedpcod:", diagnosedpcod);
+                                    console.log("diagnosedhypo:", diagnosedhypo);
+                                    console.log("diagnosedigt:", diagnosedigt);
+                                    console.log("steroids:", steroids);
+                                    console.log("diagnosedmeno:", diagnosedmeno);
+                                    console.log("diabetesType:", diabetesType);
+                                    console.log("ageOfDiagnosis:", ageOfDiagnosis);
+                                    console.log("currentMedication:", currentMedication);
+                                    console.log("otherMedication:", otherMedication);
+                                    console.log("satisfaction:", satisfaction);
+                                    console.log("currentHbA1CScore:", currentHbA1CScore);
+                                    console.log("currentFBSScore:", currentFBSScore);
+                                    console.log("difficultiesFaced:", difficultiesFaced);
+                                    console.log("otherDifficulties:", otherDifficulties);
+                                    console.log("tiredness:", tiredness);
+                                    console.log("mentalDullness:", mentalDullness);
+                                    console.log("desireToSit:", desireToSit);
+                                    console.log("urineTurbidity:", urineTurbidity);
+                                    console.log("urineColor:", urineColor);
+                                    console.log("urineQuantity:", urineQuantity);
+                                    console.log("urineHistory:", urineHistory);
+                                    console.log("urineFrequency:", urineFrequency);
+                                    console.log("sweetTaste:", sweetTaste);
+                                    console.log("bodyOdor:", bodyOdor);
+                                    console.log("mouthDryness:", mouthDryness);
+                                    console.log("burningSensation:", burningSensation);
+                                    console.log("excessiveThirst:", excessiveThirst);
+                                    console.log("excessiveFoodIntake:", excessiveFoodIntake);
+                                    console.log("excessiveSweat:", excessiveSweat);
+                                    console.log("desireForCold:", desireForCold);
+                                    console.log("badBreath:", badBreath);
+                                    console.log("fastHairNailGrowth:", fastHairNailGrowth);
+                                    console.log("bodyHeaviness:", bodyHeaviness);
+                                    console.log("stickyKnottyHair:", stickyKnottyHair);
+                                    console.log("stickinessInBody:", stickinessInBody);
+                                    console.log("bodyLooseness:", bodyLooseness);
+                                    console.log("unexplainedWeightChange:", unexplainedWeightChange);
+                                    console.log("numbnessHandsSoles:", numbnessHandsSoles);
+                                    console.log("numbnessWholeBody:", numbnessWholeBody);
+                                    console.log("nonHealingWoundUlcer:", nonHealingWoundUlcer);
+                                    
+                                    
+                                    return true;
+                                }
+
+                            });
+
+                            // Back Buttons Logic
+                            $("#risk1-back-button1").click(function () {
+                                // Reset variable values to empty
+                                resetVariables();
+                                $("#section2").hide();
+                                $("#section1").show();
+                            });
+                            $("#risk2-back-button2").click(function () {
+                                $("#section3").hide();
+                                $("#section2").show();
+                            });
+                            $("#risk3-back-button3").click(function () {
+                                $("#section4").hide();
+                                $("#section3").show();
+                            });
+
+                            $("#severity3-back-button3").click(function () {
+                                $("#section7").hide();
+                                $("#section4").show();
+                            });
+                            $("#severity4-back-button4").click(function () {
+                                $("#section8").hide();
+                                $("#section7").show();
+                            });
+                            $("#severity5-back-button5").click(function () {
+                                $("#section9").hide();
+                                $("#section8").show();
+                            });
+                            $("#severity6-back-button6").click(function () {
+                                $("#section10").hide();
+                                $("#section9").show();
+                            });
+                            $("#severity7-back-button7").click(function () {
+                                $("#section11").hide();
+                                $("#section10").show();
+                            });
+
+                        }
+                    }
+                    //}
+                    //else { alert("Entered OTP is not valid, Please check it.")}
+                });
+
+                // ============= Screens Show/Hide acc. to areyoudiabetic End =================
+
+                // ============= resetVariables for "All the default values should be blank" Start =================
+                function resetVariables() {
+                    var variables = {
+                        areyoudiabetic: '',
+                        genderValue: '',
+                        waistCircumference: '',
+                        familyHistory: '',
+                        physicalActivity: '',
+                        excessFoodIntake: '',
+                        foodType: '',
+                        diagnosedbp: '',
+                        diagnosedht: '',
+                        diagnosedpcod: '',
+                        diagnosedhypo: '',
+                        diagnosedigt: '',
+                        steroids: '',
+                        diagnosedmeno: '',
+                        diabetesType: '',
+                        ageOfDiagnosis: '',
+                        currentMedication: false,
+                        otherMedication: '',
+                        satisfaction: '',
+                        currentHbA1CScore: '',
+                        currentFBSScore: '',
+                        difficultiesFaced: false,
+                        otherDifficulties: '',
+                        tiredness: '',
+                        mentalDullness: '',
+                        desireToSit: '',
+                        urineTurbidity: '',
+                        urineColor: '',
+                        urineQuantity: '',
+                        urineHistory: '',
+                        urineFrequency: '',
+                        sweetTaste: '',
+                        bodyOdor: '',
+                        mouthDryness: '',
+                        burningSensation: '',
+                        excessiveThirst: '',
+                        excessiveFoodIntake: '',
+                        excessiveSweat: '',
+                        desireForCold: '',
+                        badBreath: '',
+                        fastHairNailGrowth: '',
+                        bodyHeaviness: '',
+                        stickyKnottyHair: '',
+                        stickinessInBody: '',
+                        bodyLooseness: '',
+                        unexplainedWeightChange: '',
+                        numbnessHandsSoles: '',
+                        numbnessWholeBody: '',
+                        nonHealingWoundUlcer: ''
+                    };
+
+                    $.each(variables, function (key, value) {
+                        window[key] = value;
+                    });
+
+                    // Clear the selected values of input fields
+                    $("input[name='custrecord_dsq_diabetic_check']").prop('checked', false);
+                    $("input[name='custrecord_dsq_gender']").prop('checked', false);
+                    $('input[name="custrecord_waist_circumference"]').prop('checked', false);
+                    $('input[name="custrecord_family_history"]').prop('checked', false);
+                    $('input[name="custrecord_physical_activity"]').prop('checked', false);
+                    $('input[name="custrecord_excess_food_intake"]').prop('checked', false);
+                    $('input[name="custrecord_dsq_food_type"]').prop('checked', false);
+                    $('input[name="custrecord_diagnosedbp"]').prop('checked', false);
+                    $('input[name="custrecord_diagnosedht"]').prop('checked', false);
+                    $('input[name="custrecord_diagnosedpcod"]').prop('checked', false);
+                    $('input[name="custrecord_diagnosedhypo"]').prop('checked', false);
+                    $('input[name="custrecord_diagnosedigt"]').prop('checked', false);
+                    $('input[name="custrecord_steroids"]').prop('checked', false);
+                    $('input[name="custrecord_diagnosedmeno"]').prop('checked', false);
+                    $("input[name='custrecord_dsq_summary']").prop('checked', false);
+                    $("#custrecord_age_of_diagnosis").val('');
+                    $("input[name='custrecord_currentmedication']").prop('checked', false);
+                    $("#custrecord_othermedication").val('');
+                    $("input[name='custrecord_dsq_satisfaction']").prop('checked', false);
+                    $("#custrecord_current_hba1c_score").val('');
+                    $("#custrecord5").val('');
+                    $("input[name='custrecord72']").prop('checked', false);
+                    $("#custrecord_otherdifficulties").val('');
+                }
+                // ============= resetVariables for "All the default values should be blank" End =================
+
+            });
+
+
+        </script>
+
+        </div>
+
+        <footer>
+
+        </footer>
+
+
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="/core/media/media.nl?id=8350&c=3373505&h=26bc968cfdc6049d6e0a&_xt=.js"></script>
+
+        </form>
+</body>
+
+</html>
