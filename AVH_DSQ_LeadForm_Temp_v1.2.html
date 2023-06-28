@@ -1410,24 +1410,19 @@
                 //     console.log(response);
                 // });
 
-                $.ajax({
-                    url: 'https://3373505.app.netsuite.com/app/site/hosting/restlet.nl?script=225&deploy=1', // Replace with the URL of your Netsuite Restlet
-                    type: 'GET',
-                    xhrFields: {
-                        withCredentials: true // Enable sending cookies and authentication headers
-                    },
-                    headers: {
-                        'Authorization': 'Bearer eyJraWQiOiJjLjMzNzM1MDUuMjAyMy0wNS0xNF8xNi0zMC01NyIsInR5cCI6IkpXVCIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiIzOzE4NzA2NCIsImF1ZCI6WyJENkI3NzAwNC1BRUZELTQ3QjktOTgxOC1COEVDQTYwN0M0RTU7MzM3MzUwNSIsIjY2ODIwZDRlMGYzMTIxNDc3NzhkMjVkYmYzMWVjNGUxNTBiYzE5MTVjZThiODk3N2Y5NWNlZTA3MDllOWIzZjYiXSwic2NvcGUiOlsicmVzdGxldHMiLCJyZXN0X3dlYnNlcnZpY2VzIl0sImlzcyI6Imh0dHBzOlwvXC9zeXN0ZW0ubmV0c3VpdGUuY29tIiwib2l0IjoxNjg3OTQ2NDM2LCJleHAiOjE2ODc5NTAwMzYsImlhdCI6MTY4Nzk0NjQzNiwianRpIjoiMzM3MzUwNS5hLWEuNzdlZTZjYzEtMDI4Yy00ZmUwLWExYTctNDU5NTI3OTMyMjJiXzE2ODc5NDY0MzY0NzguMTY4Nzk0NjQzNjQ3OCJ9.XB_bFThaQWjrLy9A8h07RmfshVLjr1lrtHBq5d50SyrluvywpRk0M7ZJ9c6RYWNliUHaXAmu-rJK7LTtRufa5rOtwCa-BR_Z4e7BULRWaIoVtISAyTiv8qAbIPo09XYxtLjGG-DdX_UxTSEHgbLt9AttA9ZNtl6fMTQBvj5iKdP2KgO35kcuU9kv4BE7iQpEbdASadp8fuWo4F9RSUPIa0hSrwfTvZzQAVseEvQ1Rq3ZQHZRBOkXisACDe5cYWmRHAPmtGd3EJEhHM0SfP0PGjuxWHwcEzVx0mKSyzFCW9L6d-oHnjqaEdJh7tFtt3Z5LwWSjyJQGq7eIVmT0jLZPhao-ogc85yMD7UC1Eb_9Z9E--m1JeVB-Gahl36vPrYLDtMikR0O9NiIlDF3SqOuZXdRCId3bpkSEk60T2WsFSGJswjwWo67obRzTdZoDQntDrTwdWUBMfhL8kTYMeeUte0Xdbhyu7-y0ku48lXVLSAsL7REN1StQXXH8AOzQJ3N2t414bssSSFbobVRva1DIjtGy4twXTJt7Z3b4sPJsyrKwD6u4NM2xHPJ-_qtLWni2IW6fdwitjRz0-6dBnWy0V5aG16pUpgqzToOAyPU--RJAuTqrnnSUUvq2nPAxPzmZhy4JFLaU1aWS1RWFt6mJ8PuRN2d1qUfjJnainmnFAE' // Replace with your actual bearer token
-                    },
-                    success: function (response) {
-                        // Handle the successful response here
-                        console.log(response);
-                    },
-                    error: function (xhr, status, error) {
-                        // Handle the error here
-                        console.log('Error:', error);
-                    }
-                });
+                var myHeaders = new Headers();
+                myHeaders.append("Authorization", "Bearer eyJraWQiOiJjLjMzNzM1MDUuMjAyMy0wNS0xNF8xNi0zMC01NyIsInR5cCI6IkpXVCIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiIzOzE4NzA2NCIsImF1ZCI6WyJENkI3NzAwNC1BRUZELTQ3QjktOTgxOC1COEVDQTYwN0M0RTU7MzM3MzUwNSIsIjY2ODIwZDRlMGYzMTIxNDc3NzhkMjVkYmYzMWVjNGUxNTBiYzE5MTVjZThiODk3N2Y5NWNlZTA3MDllOWIzZjYiXSwic2NvcGUiOlsicmVzdGxldHMiLCJyZXN0X3dlYnNlcnZpY2VzIl0sImlzcyI6Imh0dHBzOlwvXC9zeXN0ZW0ubmV0c3VpdGUuY29tIiwib2l0IjoxNjg3OTQ2NDM2LCJleHAiOjE2ODc5NTAwMzYsImlhdCI6MTY4Nzk0NjQzNiwianRpIjoiMzM3MzUwNS5hLWEuNzdlZTZjYzEtMDI4Yy00ZmUwLWExYTctNDU5NTI3OTMyMjJiXzE2ODc5NDY0MzY0NzguMTY4Nzk0NjQzNjQ3OCJ9.XB_bFThaQWjrLy9A8h07RmfshVLjr1lrtHBq5d50SyrluvywpRk0M7ZJ9c6RYWNliUHaXAmu-rJK7LTtRufa5rOtwCa-BR_Z4e7BULRWaIoVtISAyTiv8qAbIPo09XYxtLjGG-DdX_UxTSEHgbLt9AttA9ZNtl6fMTQBvj5iKdP2KgO35kcuU9kv4BE7iQpEbdASadp8fuWo4F9RSUPIa0hSrwfTvZzQAVseEvQ1Rq3ZQHZRBOkXisACDe5cYWmRHAPmtGd3EJEhHM0SfP0PGjuxWHwcEzVx0mKSyzFCW9L6d-oHnjqaEdJh7tFtt3Z5LwWSjyJQGq7eIVmT0jLZPhao-ogc85yMD7UC1Eb_9Z9E--m1JeVB-Gahl36vPrYLDtMikR0O9NiIlDF3SqOuZXdRCId3bpkSEk60T2WsFSGJswjwWo67obRzTdZoDQntDrTwdWUBMfhL8kTYMeeUte0Xdbhyu7-y0ku48lXVLSAsL7REN1StQXXH8AOzQJ3N2t414bssSSFbobVRva1DIjtGy4twXTJt7Z3b4sPJsyrKwD6u4NM2xHPJ-_qtLWni2IW6fdwitjRz0-6dBnWy0V5aG16pUpgqzToOAyPU--RJAuTqrnnSUUvq2nPAxPzmZhy4JFLaU1aWS1RWFt6mJ8PuRN2d1qUfjJnainmnFAE");
+
+                var requestOptions = {
+                    method: 'GET',
+                    headers: myHeaders,
+                    redirect: 'follow'
+                };
+
+                fetch("http://3373505.app.netsuite.com/app/site/hosting/restlet.nl?script=225&deploy=1", requestOptions)
+                    .then(response => response.text())
+                    .then(result => console.log(result))
+                    .catch(error => console.log('error', error));
 
             });
         });
