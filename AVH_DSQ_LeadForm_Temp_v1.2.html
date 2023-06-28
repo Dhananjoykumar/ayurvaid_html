@@ -1383,39 +1383,39 @@
                 const proxyUrl = 'https://cors-anywhere.herokuapp.com/'; // Proxy server URL
 
                 // Complete URL including the proxy server
-                const apiUrl = proxyUrl + restletEndpoint;
+                const apiUrl = restletEndpoint;
 
-                $.ajax({
-                    url: apiUrl,
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': 'Bearer ' + accessToken
-                    },
-                    data: dsqRequestjson,
-                    success: function (response) {
-                        console.log(response);
-                    },
-                    error: function (error) {
-                        console.log(error);
-                    }
-                });
-
-                // var requestCall = {
-                //     "async": true,
-                //     "crossDomain": true,
-                //     "url": restletEndpoint,
-                //     "method": "POST",
-                //     "headers": {
-                //         "Content-Type": "application/x-www-form-urlencoded",
-                //         "Authorization": "Bearer eyJraWQiOiJjLjMzNzM1MDUuMjAyMy0wNS0xNF8xNi0zMC01NyIsInR5cCI6IkpXVCIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiIzOzE4NzA2NCIsImF1ZCI6WyJENkI3NzAwNC1BRUZELTQ3QjktOTgxOC1COEVDQTYwN0M0RTU7MzM3MzUwNSIsIjY2ODIwZDRlMGYzMTIxNDc3NzhkMjVkYmYzMWVjNGUxNTBiYzE5MTVjZThiODk3N2Y5NWNlZTA3MDllOWIzZjYiXSwic2NvcGUiOlsicmVzdGxldHMiLCJyZXN0X3dlYnNlcnZpY2VzIl0sImlzcyI6Imh0dHBzOlwvXC9zeXN0ZW0ubmV0c3VpdGUuY29tIiwib2l0IjoxNjg3ODY4Mjg0LCJleHAiOjE2ODc4NzE4ODQsImlhdCI6MTY4Nzg2ODI4NCwianRpIjoiMzM3MzUwNS5hLWEuZTg3NWQ4YzYtMDc0ZC00MjdjLWJlMTUtNWJkODI1OTUyN2UzXzE2ODc4NjgyODQ5NjkuMTY4Nzg2ODI4NDk2OSJ9.FjWD3NGgHkBQDOCw0-eCdtfNQdddGC7xdOtVrhovow4ZLTON4Knhq7IiPC-nx_Yf4bc3RQK8aGuHYMk38bbfcx_eI4Q7z5uQZ7SnaLpN7yNUNiSPTBmcW3cVBzut3Dpno1y7oKbd3liqNOcXtx0Jnqq9dJY5_sO_TXWHAxxDMubL8ta7zCSAX3jS26evs4WX7VjG1h8KTudP_iKWA2WiZjROTLtiTPD7qUXiI3Kg6cdzZlvqBy_CXXDan577Kx1mitHSFzmHIXDnp0_g3Y0iRirxVQVcJgmthDjh_8kI9Bg_3RVMZXF1Mps8qAw0DKr-d8FL_6zI2xdIfQoK-jUzAOW0yFavFON6KNd4fT7w45zy_w9QkQKESHp5fWsfltRyNpLMonM7YzaXz3yndMAGqkyPKycCNLFB4pbgr4J3nVUf-FBQou2fGjgkVfE0GIFBIZCh7HXbqFFf1LZZOxfTRblwEPcQV07PhgZtxMyU-m5KkGBaqNSbnUArqtm150HSeud2ACLK-e6Lx3toxaVjDQSC5SogZS1uGjHIqI7QFqAOy6N3KJAA8wUsNMAwRKD1NYb_PASvn_q4yaW3GfVMyqYR_cwwxNyFnGnUqPT-zUKrYGvmxCgpygVUEW6OVlU607Zc1Ir3EUX29VEyoDMDbuviUMnyQN4gHhxD0bkajRA"
+                // $.ajax({
+                //     url: apiUrl,
+                //     method: 'POST',
+                //     headers: {
+                //         'Content-Type': 'application/json',
+                //         'Authorization': 'Bearer ' + accessToken
                 //     },
-                //     "data": dsqRequestjson
-                // }
+                //     data: dsqRequestjson,
+                //     success: function (response) {
+                //         console.log(response);
+                //     },
+                //     error: function (error) {
+                //         console.log(error);
+                //     }
+                // });
 
-                // $.ajax(requestCall).done(function (response) {
-                //     console.log(response)
-                // })
+                var requestCall = {
+                    "async": true,
+                    "crossDomain": true,
+                    "url": restletEndpoint,
+                    "method": "POST",
+                    "headers": {
+                        "Content-Type": "application/x-www-form-urlencoded",
+                        "Authorization": "Bearer eyJraWQiOiJjLjMzNzM1MDUuMjAyMy0wNS0xNF8xNi0zMC01NyIsInR5cCI6IkpXVCIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiIzOzE4NzA2NCIsImF1ZCI6WyJENkI3NzAwNC1BRUZELTQ3QjktOTgxOC1COEVDQTYwN0M0RTU7MzM3MzUwNSIsIjY2ODIwZDRlMGYzMTIxNDc3NzhkMjVkYmYzMWVjNGUxNTBiYzE5MTVjZThiODk3N2Y5NWNlZTA3MDllOWIzZjYiXSwic2NvcGUiOlsicmVzdGxldHMiLCJyZXN0X3dlYnNlcnZpY2VzIl0sImlzcyI6Imh0dHBzOlwvXC9zeXN0ZW0ubmV0c3VpdGUuY29tIiwib2l0IjoxNjg3ODY4Mjg0LCJleHAiOjE2ODc4NzE4ODQsImlhdCI6MTY4Nzg2ODI4NCwianRpIjoiMzM3MzUwNS5hLWEuZTg3NWQ4YzYtMDc0ZC00MjdjLWJlMTUtNWJkODI1OTUyN2UzXzE2ODc4NjgyODQ5NjkuMTY4Nzg2ODI4NDk2OSJ9.FjWD3NGgHkBQDOCw0-eCdtfNQdddGC7xdOtVrhovow4ZLTON4Knhq7IiPC-nx_Yf4bc3RQK8aGuHYMk38bbfcx_eI4Q7z5uQZ7SnaLpN7yNUNiSPTBmcW3cVBzut3Dpno1y7oKbd3liqNOcXtx0Jnqq9dJY5_sO_TXWHAxxDMubL8ta7zCSAX3jS26evs4WX7VjG1h8KTudP_iKWA2WiZjROTLtiTPD7qUXiI3Kg6cdzZlvqBy_CXXDan577Kx1mitHSFzmHIXDnp0_g3Y0iRirxVQVcJgmthDjh_8kI9Bg_3RVMZXF1Mps8qAw0DKr-d8FL_6zI2xdIfQoK-jUzAOW0yFavFON6KNd4fT7w45zy_w9QkQKESHp5fWsfltRyNpLMonM7YzaXz3yndMAGqkyPKycCNLFB4pbgr4J3nVUf-FBQou2fGjgkVfE0GIFBIZCh7HXbqFFf1LZZOxfTRblwEPcQV07PhgZtxMyU-m5KkGBaqNSbnUArqtm150HSeud2ACLK-e6Lx3toxaVjDQSC5SogZS1uGjHIqI7QFqAOy6N3KJAA8wUsNMAwRKD1NYb_PASvn_q4yaW3GfVMyqYR_cwwxNyFnGnUqPT-zUKrYGvmxCgpygVUEW6OVlU607Zc1Ir3EUX29VEyoDMDbuviUMnyQN4gHhxD0bkajRA"
+                    },
+                    "data": dsqRequestjson
+                }
+
+                $.ajax(requestCall).done(function (response) {
+                    console.log(response)
+                })
 
             });
         });
