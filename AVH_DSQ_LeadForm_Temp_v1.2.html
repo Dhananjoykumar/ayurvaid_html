@@ -1313,7 +1313,7 @@
                 var numbnessWholeBody = $("input[name='custrecord_dsq_numb_whole']:checked").val();
                 var nonHealingWoundUlcer = $("input[name='custrecord_dsq_nonheal']:checked").val();
 
-                var dsqRequestjson = {
+                var submitjson = {
                     firstName: firstName,
                     lastName: LastName,
                     dateOfBirth: dateOfBirth,
@@ -1372,29 +1372,50 @@
                     nonHealingWoundUlcer: nonHealingWoundUlcer
                 };
 
+                var dsqRequestjson = JSON.stringify(submitjson);
+
                 console.log(dsqRequestjson);
 
                 // Step 5: Make POST Request
                 const restletEndpoint = 'https://3373505.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=220&deploy=1';
-                const accessToken = "eyJraWQiOiJjLjMzNzM1MDUuMjAyMy0wNS0xNF8xNi0zMC01NyIsInR5cCI6IkpXVCIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiIzOzE4NzA2NCIsImF1ZCI6WyJENkI3NzAwNC1BRUZELTQ3QjktOTgxOC1COEVDQTYwN0M0RTU7MzM3MzUwNSIsIjY2ODIwZDRlMGYzMTIxNDc3NzhkMjVkYmYzMWVjNGUxNTBiYzE5MTVjZThiODk3N2Y5NWNlZTA3MDllOWIzZjYiXSwic2NvcGUiOlsicmVzdGxldHMiLCJyZXN0X3dlYnNlcnZpY2VzIl0sImlzcyI6Imh0dHBzOlwvXC9zeXN0ZW0ubmV0c3VpdGUuY29tIiwib2l0IjoxNjg3ODY1NjUxLCJleHAiOjE2ODc4NjkyNTEsImlhdCI6MTY4Nzg2NTY1MSwianRpIjoiMzM3MzUwNS5hLWEuZWU4NWU1ODktMWYwZC00NmUwLThiYjMtMjIwZTg2ODA0MDA4XzE2ODc4NjU2NTEzNTkuMTY4Nzg2NTY1MTM1OSJ9.S6Jny3fMsXxIK6n62HO9c7BPaaAiMUbCx4VMv0I9OEQcIbdqGVcUriUOD0T3REXK5LEY2v1gm_HccHJ7fkG8M4mwx_h9NSbDyzhF0MV0GoZk7bANJxdQtJ-E4w4dogR1W1tzymuoXkrrKqtxlM1Ee8O4IrvEDFDFnwBBZ0FIadhFeK53oSpSARUJF8J2aR1YkdIa6rreciAF797qIzJDXV9huli964-RGf7A55oi3Avw5FKT5wHXeuCnAE26FHWrRGFXrUdt0PO32VzksdN4bJNrxwNQJETiGMLlS1jgFbvA_ZF3TKGh2PzTcraKNlVVKuTtVToR3tIck0GHjecBMvKVQ8Z4R9jvCY-A5Mj_co6X_Suq5Dr6rdByxurA5jy9hpAW7wYzrF68wthZRrROvKfE4uVBCBuvqnbDwNSjJo1ubIriwVMUDEQ5sR8KGuD1pJeBB8ZClOARPVuOQYfZ-fRy4BfF9uIMTeZWR_xyfstuJieGDUr7yegbLkjwpdNyWVebM2AyJ8yix-cAU-L1Ot-QnfKqAZVrxefDibdWHlq0uQK_gjhlYXc7_-fntdo4kJqmmRLRwhjESSK-ZLRJcB3jIKuH0KvItAMro66PwQTyfwnptDox9NO7G79YFaJzOYX9HCePLcSpyGm6L-6cEd18OylTb9DTlTDK45D3AEY";
+                const accessToken = "eyJraWQiOiJjLjMzNzM1MDUuMjAyMy0wNS0xNF8xNi0zMC01NyIsInR5cCI6IkpXVCIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiIzOzE4NzA2NCIsImF1ZCI6WyJENkI3NzAwNC1BRUZELTQ3QjktOTgxOC1COEVDQTYwN0M0RTU7MzM3MzUwNSIsIjY2ODIwZDRlMGYzMTIxNDc3NzhkMjVkYmYzMWVjNGUxNTBiYzE5MTVjZThiODk3N2Y5NWNlZTA3MDllOWIzZjYiXSwic2NvcGUiOlsicmVzdF93ZWJzZXJ2aWNlcyIsInJlc3RsZXRzIl0sImlzcyI6Imh0dHBzOlwvXC9zeXN0ZW0ubmV0c3VpdGUuY29tIiwib2l0IjoxNjg3OTMzNDU2LCJleHAiOjE2ODc5MzcwNTYsImlhdCI6MTY4NzkzMzQ1NiwianRpIjoiMzM3MzUwNS5hLWEuMTE2N2FjMTAtMTAyYi00ZmI0LTgzYzgtZTQyNzU4MzA2YzEyXzE2ODc5MzM0NTYxOTYuMTY4NzkzMzQ1NjE5NiJ9.Zc6pEmQi5tSlaqdB-XslUhs4CpfqwI-w9VHLKxL1h4gk4WvnXQ-7dFvZTJkRUvOh9MPOv5K8S1qw6wW3rx0_bipksBGXO2GJtGyGu3gcen9iYaNwno0I2TVdKg6cgJz7pohrCfzaR2YGrkveXej4AXxY96Cc3QkpxE1641NTb5pRSTBETscSSIatsQvVO1-zH_vu4wtgyrVRKaWrc0I3E04ZEluYP0vVVfFcbirumQdIdN68F_owyvccoRgiwZKUlcC1aKVyXhA7J7g87DgsCGG0_uJn0TZctnhY1o0hRWfLfXhNA6w9eMg_1qQcTtIwCCBPKZDrmY3E2wtI56k45pS9PzYa7qX2bBh6uboxvFqnu9e9Voex7PiGG-8hIzc-Y1-9QMbyq4ccoZJwVi9ApFa1hx7VQqiGqo0oXoHlnExUuHxgXXHKFN0h9POd0KiFNUUHTx6DbaWl6RhPYm5oSD9noV-pHYtnYaO2rGlw4K9QrjOilzEM3atC_rUGrAsszXSvpychLmN3NhZA_uWxOEvfilsCRvIfIMGKznL2GJI6pPhj6Ld-ITOk0VbIbwz9g-lw-F3JkkfKuVZZNyethAXUTmOF-tBTz4SPTaOw-T3_VqHQPg994vu__yEn5jzzDPit2xRFlzenD2qZhAHf4iCErCELs3m7dO-zW_DEw_o";
+                
+                const proxyUrl = 'https://cors-anywhere.herokuapp.com/'; // Proxy server URL
+
+                // Complete URL including the proxy server
+                const apiUrl = proxyUrl + restletEndpoint;
 
                 $.ajax({
-                    url: restletEndpoint,
-                    type: 'POST',
+                    url: apiUrl,
+                    method: 'POST',
                     headers: {
-                        'Authorization': `Bearer ${accessToken}`,
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + accessToken
                     },
-                    data: JSON.stringify(dsqRequestjson),
+                    data: dsqRequestjson,
                     success: function (response) {
-                        // Request successful
-                        $('#response').html(JSON.stringify(response));
+                        console.log(response);
                     },
-                    error: function (xhr, status, error) {
-                        // Request failed
-                        $('#response').html('Error: ' + xhr.status);
+                    error: function (error) {
+                        console.log(error);
                     }
                 });
+
+                // var requestCall = {
+                //     "async": true,
+                //     "crossDomain": true,
+                //     "url": restletEndpoint,
+                //     "method": "POST",
+                //     "headers": {
+                //         "Content-Type": "application/x-www-form-urlencoded",
+                //         "Authorization": "Bearer eyJraWQiOiJjLjMzNzM1MDUuMjAyMy0wNS0xNF8xNi0zMC01NyIsInR5cCI6IkpXVCIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiIzOzE4NzA2NCIsImF1ZCI6WyJENkI3NzAwNC1BRUZELTQ3QjktOTgxOC1COEVDQTYwN0M0RTU7MzM3MzUwNSIsIjY2ODIwZDRlMGYzMTIxNDc3NzhkMjVkYmYzMWVjNGUxNTBiYzE5MTVjZThiODk3N2Y5NWNlZTA3MDllOWIzZjYiXSwic2NvcGUiOlsicmVzdGxldHMiLCJyZXN0X3dlYnNlcnZpY2VzIl0sImlzcyI6Imh0dHBzOlwvXC9zeXN0ZW0ubmV0c3VpdGUuY29tIiwib2l0IjoxNjg3ODY4Mjg0LCJleHAiOjE2ODc4NzE4ODQsImlhdCI6MTY4Nzg2ODI4NCwianRpIjoiMzM3MzUwNS5hLWEuZTg3NWQ4YzYtMDc0ZC00MjdjLWJlMTUtNWJkODI1OTUyN2UzXzE2ODc4NjgyODQ5NjkuMTY4Nzg2ODI4NDk2OSJ9.FjWD3NGgHkBQDOCw0-eCdtfNQdddGC7xdOtVrhovow4ZLTON4Knhq7IiPC-nx_Yf4bc3RQK8aGuHYMk38bbfcx_eI4Q7z5uQZ7SnaLpN7yNUNiSPTBmcW3cVBzut3Dpno1y7oKbd3liqNOcXtx0Jnqq9dJY5_sO_TXWHAxxDMubL8ta7zCSAX3jS26evs4WX7VjG1h8KTudP_iKWA2WiZjROTLtiTPD7qUXiI3Kg6cdzZlvqBy_CXXDan577Kx1mitHSFzmHIXDnp0_g3Y0iRirxVQVcJgmthDjh_8kI9Bg_3RVMZXF1Mps8qAw0DKr-d8FL_6zI2xdIfQoK-jUzAOW0yFavFON6KNd4fT7w45zy_w9QkQKESHp5fWsfltRyNpLMonM7YzaXz3yndMAGqkyPKycCNLFB4pbgr4J3nVUf-FBQou2fGjgkVfE0GIFBIZCh7HXbqFFf1LZZOxfTRblwEPcQV07PhgZtxMyU-m5KkGBaqNSbnUArqtm150HSeud2ACLK-e6Lx3toxaVjDQSC5SogZS1uGjHIqI7QFqAOy6N3KJAA8wUsNMAwRKD1NYb_PASvn_q4yaW3GfVMyqYR_cwwxNyFnGnUqPT-zUKrYGvmxCgpygVUEW6OVlU607Zc1Ir3EUX29VEyoDMDbuviUMnyQN4gHhxD0bkajRA"
+                //     },
+                //     "data": dsqRequestjson
+                // }
+
+                // $.ajax(requestCall).done(function (response) {
+                //     console.log(response)
+                // })
 
             });
         });
