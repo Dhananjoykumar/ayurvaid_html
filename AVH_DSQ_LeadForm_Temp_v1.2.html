@@ -1240,6 +1240,10 @@
        
 
     <div id="response"></div>
+    <div>
+
+        
+    </div>
 
     <script type="text/javascript">
 
@@ -1260,13 +1264,14 @@
 
 
                     var firstName = $("#custrecord_dsq_first_name").val();
-                    var LastName = $("#custrecord_dsq_last_name").val();
+                    var lastName = $("#custrecord_dsq_last_name").val();
+                    var prospectName = firstName + " " + lastName;
                     var dateOfBirth = $("#custrecord_dsq_dob").val();
                     var age = $("#custrecord_dsq_age").val();
-                    var genderValue = $("input[name='custrecord_dsq_gender']:checked").val();
-                    var phone = $("#custrecord_dsq_mobile").val();
-                    var email = $("#custrecord_dsq_email").val();
-                    var areyoudiabetic = $("input[name='custrecord_dsq_diabetic_check']:checked").val();
+                    var gender = $("input[name='custrecord_dsq_gender']:checked").val();
+                    var phoneNumber = $("#custrecord_dsq_mobile").val();
+                    var emailAddress = $("#custrecord_dsq_email").val();
+                    var areYouDiabetic = $("input[name='custrecord_dsq_diabetic_check']:checked").val();
 
                     var waistCircumference = $('input[name="custrecord_waist_circumference"]:checked').val();
                     var familyHistory = $('input[name="custrecord_family_history"]:checked').val();
@@ -1283,14 +1288,23 @@
 
                     var diabetesType = $("input[name='custrecord_dsq_summary']:checked").val();
                     var ageOfDiagnosis = $("#custrecord_age_of_diagnosis").val();
-                    var currentMedication = $("input[name='custrecord_currentmedication']:checked").length > 0;
+                    var currentMedication = $("input[name='custrecord_currentmedication']:checked").map(function () {
+                        return $(this).val();
+                    }).get();
+                    console.log("currentMedication: " +currentMedication);
+                    //var currentMedication = $("input[name='custrecord_currentmedication']:checked").length > 0;
                     var otherMedication = $("#custrecord_othermedication").val();
                     var satisfaction = $("input[name='custrecord_dsq_satisfaction']:checked").val();
                     var currentHbA1CScore = $("#custrecord_current_hba1c_score").val();
                     var currentFBSScore = $("#custrecord5").val();
-                    var difficultiesFaced = $("input[name='custrecord72']:checked").length > 0;
+                    var difficultiesFaced = $("input[name='custrecord72']:checked").map(function () {
+                        return $(this).val();
+                    }).get();
+                    console.log('difficultiesFaced' + difficultiesFaced);
+                    //var difficultiesFaced = $("input[name='custrecord72']:checked").length > 0;
                     var otherDifficulties = $("#custrecord_otherdifficulties").val();
                     var otherIschecked = $("#otherCheckbox").is(":checked");
+                    
                     var tiredness = $("input[name='custrecord_tiredness']:checked").val();
                     var mentalDullness = $("input[name='custrecord_dsq_lethargy_mental']:checked").val();
                     var desireToSit = $("input[name='custrecord_dsq_laziness']:checked").val();
@@ -1320,13 +1334,13 @@
 
                     var submitjson = {
                         firstName: firstName,
-                        lastName: LastName,
-                        dateOfBirth: dateOfBirth,
+                        lastName: lastName,
+                        prospectName: prospectName,
+                        gender: gender,
                         age: age,
-                        genderValue: genderValue,
-                        phone: phone,
-                        email: email,
-                        areyoudiabetic: areyoudiabetic,
+                        phoneNumber: phoneNumber,
+                        emailAddress: emailAddress,
+                        areYouDiabetic: areYouDiabetic,
                         waistCircumference: waistCircumference,
                         familyHistory: familyHistory,
                         physicalActivity: physicalActivity,
