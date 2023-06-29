@@ -1237,17 +1237,26 @@
                     <!--Severity 7 End-->
             </div>
     </form>
-    </div>
 
-
-    </div>
 
     <div id="response"></div>
+    <div>
 
+
+    </div>
+    <script src="/oauth-1.0a.js"></script>
     <script type="text/javascript">
 
         $(document).ready(function () {
 
+            // Set up CORS headers for all AJAX requests
+            $.ajaxSetup({
+                headers: {
+                    'Access-Control-Allow-Origin': '*', // Replace with your domain
+                    'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+                    'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
+                }
+            });
 
             $('#dsqentryform').submit(function (event) {
                 event.preventDefault(); // Prevent the default form submission
@@ -1255,13 +1264,14 @@
 
 
                 var firstName = $("#custrecord_dsq_first_name").val();
-                var LastName = $("#custrecord_dsq_last_name").val();
+                var lastName = $("#custrecord_dsq_last_name").val();
+                var prospectName = firstName + " " + lastName;
                 var dateOfBirth = $("#custrecord_dsq_dob").val();
                 var age = $("#custrecord_dsq_age").val();
-                var genderValue = $("input[name='custrecord_dsq_gender']:checked").val();
-                var phone = $("#custrecord_dsq_mobile").val();
-                var email = $("#custrecord_dsq_email").val();
-                var areyoudiabetic = $("input[name='custrecord_dsq_diabetic_check']:checked").val();
+                var gender = $("input[name='custrecord_dsq_gender']:checked").val();
+                var phoneNumber = $("#custrecord_dsq_mobile").val();
+                var emailAddress = $("#custrecord_dsq_email").val();
+                var areYouDiabetic = $("input[name='custrecord_dsq_diabetic_check']:checked").val();
 
                 var waistCircumference = $('input[name="custrecord_waist_circumference"]:checked').val();
                 var familyHistory = $('input[name="custrecord_family_history"]:checked').val();
@@ -1278,14 +1288,23 @@
 
                 var diabetesType = $("input[name='custrecord_dsq_summary']:checked").val();
                 var ageOfDiagnosis = $("#custrecord_age_of_diagnosis").val();
-                var currentMedication = $("input[name='custrecord_currentmedication']:checked").length > 0;
+                var currentMedication = $("input[name='custrecord_currentmedication']:checked").map(function () {
+                    return $(this).val();
+                }).get();
+                console.log("currentMedication: " + currentMedication);
+                //var currentMedication = $("input[name='custrecord_currentmedication']:checked").length > 0;
                 var otherMedication = $("#custrecord_othermedication").val();
                 var satisfaction = $("input[name='custrecord_dsq_satisfaction']:checked").val();
                 var currentHbA1CScore = $("#custrecord_current_hba1c_score").val();
                 var currentFBSScore = $("#custrecord5").val();
-                var difficultiesFaced = $("input[name='custrecord72']:checked").length > 0;
+                var difficultiesFaced = $("input[name='custrecord72']:checked").map(function () {
+                    return $(this).val();
+                }).get();
+                console.log('difficultiesFaced' + difficultiesFaced);
+                //var difficultiesFaced = $("input[name='custrecord72']:checked").length > 0;
                 var otherDifficulties = $("#custrecord_otherdifficulties").val();
                 var otherIschecked = $("#otherCheckbox").is(":checked");
+
                 var tiredness = $("input[name='custrecord_tiredness']:checked").val();
                 var mentalDullness = $("input[name='custrecord_dsq_lethargy_mental']:checked").val();
                 var desireToSit = $("input[name='custrecord_dsq_laziness']:checked").val();
@@ -1315,13 +1334,13 @@
 
                 var submitjson = {
                     firstName: firstName,
-                    lastName: LastName,
-                    dateOfBirth: dateOfBirth,
+                    lastName: lastName,
+                    prospectName: prospectName,
+                    gender: gender,
                     age: age,
-                    genderValue: genderValue,
-                    phone: phone,
-                    email: email,
-                    areyoudiabetic: areyoudiabetic,
+                    phoneNumber: phoneNumber,
+                    emailAddress: emailAddress,
+                    areYouDiabetic: areYouDiabetic,
                     waistCircumference: waistCircumference,
                     familyHistory: familyHistory,
                     physicalActivity: physicalActivity,
@@ -1376,52 +1395,137 @@
 
                 console.log(dsqRequestjson);
 
-                // Step 5: Make POST Request
-                const restletEndpoint = 'https://3373505.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=220&deploy=1';
-                const accessToken = "eyJraWQiOiJjLjMzNzM1MDUuMjAyMy0wNS0xNF8xNi0zMC01NyIsInR5cCI6IkpXVCIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiIzOzE4NzA2NCIsImF1ZCI6WyJENkI3NzAwNC1BRUZELTQ3QjktOTgxOC1COEVDQTYwN0M0RTU7MzM3MzUwNSIsIjY2ODIwZDRlMGYzMTIxNDc3NzhkMjVkYmYzMWVjNGUxNTBiYzE5MTVjZThiODk3N2Y5NWNlZTA3MDllOWIzZjYiXSwic2NvcGUiOlsicmVzdF93ZWJzZXJ2aWNlcyIsInJlc3RsZXRzIl0sImlzcyI6Imh0dHBzOlwvXC9zeXN0ZW0ubmV0c3VpdGUuY29tIiwib2l0IjoxNjg3OTMzNDU2LCJleHAiOjE2ODc5MzcwNTYsImlhdCI6MTY4NzkzMzQ1NiwianRpIjoiMzM3MzUwNS5hLWEuMTE2N2FjMTAtMTAyYi00ZmI0LTgzYzgtZTQyNzU4MzA2YzEyXzE2ODc5MzM0NTYxOTYuMTY4NzkzMzQ1NjE5NiJ9.Zc6pEmQi5tSlaqdB-XslUhs4CpfqwI-w9VHLKxL1h4gk4WvnXQ-7dFvZTJkRUvOh9MPOv5K8S1qw6wW3rx0_bipksBGXO2GJtGyGu3gcen9iYaNwno0I2TVdKg6cgJz7pohrCfzaR2YGrkveXej4AXxY96Cc3QkpxE1641NTb5pRSTBETscSSIatsQvVO1-zH_vu4wtgyrVRKaWrc0I3E04ZEluYP0vVVfFcbirumQdIdN68F_owyvccoRgiwZKUlcC1aKVyXhA7J7g87DgsCGG0_uJn0TZctnhY1o0hRWfLfXhNA6w9eMg_1qQcTtIwCCBPKZDrmY3E2wtI56k45pS9PzYa7qX2bBh6uboxvFqnu9e9Voex7PiGG-8hIzc-Y1-9QMbyq4ccoZJwVi9ApFa1hx7VQqiGqo0oXoHlnExUuHxgXXHKFN0h9POd0KiFNUUHTx6DbaWl6RhPYm5oSD9noV-pHYtnYaO2rGlw4K9QrjOilzEM3atC_rUGrAsszXSvpychLmN3NhZA_uWxOEvfilsCRvIfIMGKznL2GJI6pPhj6Ld-ITOk0VbIbwz9g-lw-F3JkkfKuVZZNyethAXUTmOF-tBTz4SPTaOw-T3_VqHQPg994vu__yEn5jzzDPit2xRFlzenD2qZhAHf4iCErCELs3m7dO-zW_DEw_o";
-                
-                const proxyUrl = 'https://cors-anywhere.herokuapp.com/'; // Proxy server URL
 
-                // Complete URL including the proxy server
-                const apiUrl = restletEndpoint;
 
+                // Define the OAuth 1.0 credentials
+                // var consumerKey = '61e349090da37446c5684e1c2679eade484d1fe602ca6e183d02fd138045d982';
+                // var consumerSecret = '33c61b52739bfa6dc5a84294f5b8aec7f39963a31541f6afeb944c8bc69482cf';
+                // var token = '94f0d102f82aeda7c76a90a8d0dfb02441e5c5aa4e830c22ec53ab5567b10e13';
+                // var tokenSecret = '8884c66e9902c754b0e1f588f9809bf87827d87d5a217c87804a5bc01faf7bc9';
+
+                // Set the endpoint URL of your Restlet
+                // var restletUrl = 'https://3373505.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=225&deploy=1';
+
+                // Generate the OAuth 1.0 signature
+                // var timestamp = Math.floor(Date.now() / 1000);
+                // var nonce = generateNonce();
+                // var signature = generateOAuthSignature(restletUrl, 'GET', timestamp, nonce);
+
+                // Construct the Authorization header
+                // var authorizationHeader = 'OAuth ' +
+                //     'oauth_consumer_key="' + consumerKey + '", ' +
+                //     'oauth_token="' + token + '", ' +
+                //     'oauth_signature_method="HMAC-SHA1", ' +
+                //     'oauth_timestamp="' + timestamp + '", ' +
+                //     'oauth_nonce="' + nonce + '", ' +
+                //     'oauth_version="1.0", ' +
+                //     'oauth_signature="' + signature + '"';
+
+                // Make the AJAX request
                 // $.ajax({
-                //     url: apiUrl,
-                //     method: 'POST',
+                //     url: restletUrl,
+                //     method: 'GET',
                 //     headers: {
-                //         'Content-Type': 'application/json',
-                //         'Authorization': 'Bearer ' + accessToken
+                //         'Authorization': authorizationHeader
                 //     },
-                //     data: dsqRequestjson,
                 //     success: function (response) {
+                //         // Handle the response from the Restlet
                 //         console.log(response);
                 //     },
-                //     error: function (error) {
-                //         console.log(error);
+                //     error: function (xhr, status, error) {
+                //         // Handle the error if the request fails
+                //         console.error(error);
                 //     }
                 // });
 
-                var requestCall = {
-                    "async": true,
-                    "crossDomain": true,
-                    "url": restletEndpoint,
-                    "method": "POST",
-                    "headers": {
-                        "Content-Type": "application/x-www-form-urlencoded",
-                        "Authorization": "Bearer eyJraWQiOiJjLjMzNzM1MDUuMjAyMy0wNS0xNF8xNi0zMC01NyIsInR5cCI6IkpXVCIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiIzOzE4NzA2NCIsImF1ZCI6WyJENkI3NzAwNC1BRUZELTQ3QjktOTgxOC1COEVDQTYwN0M0RTU7MzM3MzUwNSIsIjY2ODIwZDRlMGYzMTIxNDc3NzhkMjVkYmYzMWVjNGUxNTBiYzE5MTVjZThiODk3N2Y5NWNlZTA3MDllOWIzZjYiXSwic2NvcGUiOlsicmVzdGxldHMiLCJyZXN0X3dlYnNlcnZpY2VzIl0sImlzcyI6Imh0dHBzOlwvXC9zeXN0ZW0ubmV0c3VpdGUuY29tIiwib2l0IjoxNjg3ODY4Mjg0LCJleHAiOjE2ODc4NzE4ODQsImlhdCI6MTY4Nzg2ODI4NCwianRpIjoiMzM3MzUwNS5hLWEuZTg3NWQ4YzYtMDc0ZC00MjdjLWJlMTUtNWJkODI1OTUyN2UzXzE2ODc4NjgyODQ5NjkuMTY4Nzg2ODI4NDk2OSJ9.FjWD3NGgHkBQDOCw0-eCdtfNQdddGC7xdOtVrhovow4ZLTON4Knhq7IiPC-nx_Yf4bc3RQK8aGuHYMk38bbfcx_eI4Q7z5uQZ7SnaLpN7yNUNiSPTBmcW3cVBzut3Dpno1y7oKbd3liqNOcXtx0Jnqq9dJY5_sO_TXWHAxxDMubL8ta7zCSAX3jS26evs4WX7VjG1h8KTudP_iKWA2WiZjROTLtiTPD7qUXiI3Kg6cdzZlvqBy_CXXDan577Kx1mitHSFzmHIXDnp0_g3Y0iRirxVQVcJgmthDjh_8kI9Bg_3RVMZXF1Mps8qAw0DKr-d8FL_6zI2xdIfQoK-jUzAOW0yFavFON6KNd4fT7w45zy_w9QkQKESHp5fWsfltRyNpLMonM7YzaXz3yndMAGqkyPKycCNLFB4pbgr4J3nVUf-FBQou2fGjgkVfE0GIFBIZCh7HXbqFFf1LZZOxfTRblwEPcQV07PhgZtxMyU-m5KkGBaqNSbnUArqtm150HSeud2ACLK-e6Lx3toxaVjDQSC5SogZS1uGjHIqI7QFqAOy6N3KJAA8wUsNMAwRKD1NYb_PASvn_q4yaW3GfVMyqYR_cwwxNyFnGnUqPT-zUKrYGvmxCgpygVUEW6OVlU607Zc1Ir3EUX29VEyoDMDbuviUMnyQN4gHhxD0bkajRA"
+                // Function to generate a random nonce
+                // function generateNonce() {
+                //     // Implement your own logic to generate a random string
+                //     // This is just a simple example
+                //     return Math.random().toString(36).substring(2);
+                // }
+
+                // // Function to generate the OAuth 1.0 signature
+                // function generateOAuthSignature(url, method, timestamp, nonce) {
+                //     // Implement your own logic to generate the OAuth signature
+                //     // This involves combining and hashing various components using your consumer secret and token secret
+                //     // There are libraries available (such as oauth-1.0a) that can assist in generating the signature
+                //     // Here's an example of generating the signature manually (not recommended for production use):
+                //     var signatureBaseString = method.toUpperCase() + '&' + encodeURIComponent(url) + '&' +
+                //         encodeURIComponent('oauth_consumer_key=' + consumerKey + '&' +
+                //             'oauth_nonce=' + nonce + '&' +
+                //             'oauth_signature_method=HMAC-SHA1&' +
+                //             'oauth_timestamp=' + timestamp + '&' +
+                //             'oauth_token=' + token + '&' +
+                //             'oauth_version=1.0');
+
+                //     var signingKey = encodeURIComponent(consumerSecret) + '&' + encodeURIComponent(tokenSecret);
+                //     var signature = CryptoJS.HmacSHA1(signatureBaseString, signingKey);
+                //     return signature.toString(CryptoJS.enc.Base64);
+                // }
+
+
+                // var consumerKey = '61e349090da37446c5684e1c2679eade484d1fe602ca6e183d02fd138045d982';
+                // var consumerSecret = '33c61b52739bfa6dc5a84294f5b8aec7f39963a31541f6afeb944c8bc69482cf';
+                // var token = '94f0d102f82aeda7c76a90a8d0dfb02441e5c5aa4e830c22ec53ab5567b10e13';
+                // var tokenSecret = '8884c66e9902c754b0e1f588f9809bf87827d87d5a217c87804a5bc01faf7bc9';
+
+                // Set the endpoint URL of your Restlet
+                // var restletUrl = 'https://3373505.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=225&deploy=1';
+
+                // Step 1: Gather the required parameters
+                var consumerKey = '61e349090da37446c5684e1c2679eade484d1fe602ca6e183d02fd138045d982';
+                var consumerSecret = '33c61b52739bfa6dc5a84294f5b8aec7f39963a31541f6afeb944c8bc69482cf';
+                var tokenID = '94f0d102f82aeda7c76a90a8d0dfb02441e5c5aa4e830c22ec53ab5567b10e13';
+                var tokenSecret = '8884c66e9902c754b0e1f588f9809bf87827d87d5a217c87804a5bc01faf7bc9';
+                var httpMethod = 'GET';
+                var baseURL = 'https://3373505.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=225&deploy=1';
+                // var requestParams = 'name=ABC';
+
+                // Step 2: Construct the Signature Base String
+                var encodedBaseURL = encodeURIComponent(baseURL);
+                // var encodedParams = encodeURIComponent(requestParams);
+                var signatureBaseString = httpMethod + '&' + encodedBaseURL;//+ '&' + encodedParams;
+
+                // Step 3: Generate the Signing Key
+                var signingKey = consumerSecret + '&' + tokenSecret;
+
+                // Step 4: Generate the Signature
+                var signature = CryptoJS.HmacSHA1(signatureBaseString, signingKey).toString(CryptoJS.enc.Base64);
+
+                // Step 5: Construct the Authorization Header
+                var authorizationHeader = 'OAuth realm="", oauth_consumer_key="' + consumerKey + '", oauth_token="' + tokenID + '", oauth_signature_method="HMAC-SHA1", oauth_timestamp="' + Math.floor(Date.now() / 1000) + '", oauth_nonce="' + generateNonce() + '", oauth_version="1.0", oauth_signature="' + signature + '"';
+
+                // Step 6: Make the AJAX request
+                $.ajax({
+                    url: baseURL, //+ '?' + requestParams,
+                    type: httpMethod,
+                    headers: {
+                        'Authorization': authorizationHeader
                     },
-                    "data": dsqRequestjson
+                    success: function (response) {
+                        // Handle the response
+                        console.log(response);
+                    },
+                    error: function (xhr, status, error) {
+                        // Handle the error
+                        console.log(error);
+                    }
+                });
+
+                // Helper function to generate a random nonce
+                function generateNonce() {
+                    return Math.random().toString(36).substring(2);
                 }
 
-                $.ajax(requestCall).done(function (response) {
-                    console.log(response)
-                })
 
             });
         });
 
 
     </script>
+    <script src="CryptoJS v3.1.2/rollups/hmac-sha1.js"></script>
+    <script src="CryptoJS v3.1.2/components/enc-base64-min.js"></script>
 
     </div>
 
