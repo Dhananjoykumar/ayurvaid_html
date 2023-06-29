@@ -1237,185 +1237,295 @@
                     <!--Severity 7 End-->
             </div>
     </form>
-       
+
 
     <div id="response"></div>
     <div>
 
-        
-    </div>
 
+    </div>
+    <script src="/oauth-1.0a.js"></script>
     <script type="text/javascript">
 
         $(document).ready(function () {
 
-                // Set up CORS headers for all AJAX requests
-                $.ajaxSetup({
+            // Set up CORS headers for all AJAX requests
+            $.ajaxSetup({
+                headers: {
+                    'Access-Control-Allow-Origin': '*', // Replace with your domain
+                    'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+                    'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
+                }
+            });
+
+            $('#dsqentryform').submit(function (event) {
+                event.preventDefault(); // Prevent the default form submission
+                console.log('dsqentryform Started');
+
+
+                var firstName = $("#custrecord_dsq_first_name").val();
+                var lastName = $("#custrecord_dsq_last_name").val();
+                var prospectName = firstName + " " + lastName;
+                var dateOfBirth = $("#custrecord_dsq_dob").val();
+                var age = $("#custrecord_dsq_age").val();
+                var gender = $("input[name='custrecord_dsq_gender']:checked").val();
+                var phoneNumber = $("#custrecord_dsq_mobile").val();
+                var emailAddress = $("#custrecord_dsq_email").val();
+                var areYouDiabetic = $("input[name='custrecord_dsq_diabetic_check']:checked").val();
+
+                var waistCircumference = $('input[name="custrecord_waist_circumference"]:checked').val();
+                var familyHistory = $('input[name="custrecord_family_history"]:checked').val();
+                var physicalActivity = $('input[name="custrecord_physical_activity"]:checked').val();
+                var excessFoodIntake = $('input[name="custrecord_excess_food_intake"]:checked').val();
+                var foodType = $('input[name="custrecord_dsq_food_type"]:checked').val();                                // validation for Risk 2 section
+                var diagnosedbp = $('input[name="custrecord_diagnosedbp"]:checked').val();
+                var diagnosedht = $('input[name="custrecord_diagnosedht"]:checked').val();
+                var diagnosedpcod = $('input[name="custrecord_diagnosedpcod"]:checked').val();
+                var diagnosedhypo = $('input[name="custrecord_diagnosedhypo"]:checked').val();
+                var diagnosedigt = $('input[name="custrecord_diagnosedigt"]:checked').val();
+                var steroids = $('input[name="custrecord_steroids"]:checked').val();
+                var diagnosedmeno = $('input[name="custrecord_diagnosedmeno"]:checked').val();
+
+                var diabetesType = $("input[name='custrecord_dsq_summary']:checked").val();
+                var ageOfDiagnosis = $("#custrecord_age_of_diagnosis").val();
+                var currentMedication = $("input[name='custrecord_currentmedication']:checked").map(function () {
+                    return $(this).val();
+                }).get();
+                console.log("currentMedication: " + currentMedication);
+                //var currentMedication = $("input[name='custrecord_currentmedication']:checked").length > 0;
+                var otherMedication = $("#custrecord_othermedication").val();
+                var satisfaction = $("input[name='custrecord_dsq_satisfaction']:checked").val();
+                var currentHbA1CScore = $("#custrecord_current_hba1c_score").val();
+                var currentFBSScore = $("#custrecord5").val();
+                var difficultiesFaced = $("input[name='custrecord72']:checked").map(function () {
+                    return $(this).val();
+                }).get();
+                console.log('difficultiesFaced' + difficultiesFaced);
+                //var difficultiesFaced = $("input[name='custrecord72']:checked").length > 0;
+                var otherDifficulties = $("#custrecord_otherdifficulties").val();
+                var otherIschecked = $("#otherCheckbox").is(":checked");
+
+                var tiredness = $("input[name='custrecord_tiredness']:checked").val();
+                var mentalDullness = $("input[name='custrecord_dsq_lethargy_mental']:checked").val();
+                var desireToSit = $("input[name='custrecord_dsq_laziness']:checked").val();
+                var urineTurbidity = $("input[name='custrecord_dsq_urine_turbid']:checked").val();
+                var urineColor = $("input[name='custrecord_dsq_urine_color']:checked").val();
+                var urineQuantity = $("input[name='custrecord_dsq_urine_quantity']:checked").val();
+                var urineHistory = $("input[name='custrecord_dsq_urine_history']:checked").val();
+                var urineFrequency = $("input[name='custrecord_dsq_frequency_unrine']:checked").val();
+                var sweetTaste = $("input[name='custrecord_dsq_sweet_taste_in_mouth']:checked").val();
+                var bodyOdor = $("input[name='custrecord_dsq_body_odour']:checked").val();
+                var mouthDryness = $("input[name='custrecord_mouth_dryness']:checked").val();
+                var burningSensation = $("input[name='custrecord_dsq_burning_sensation']:checked").val();
+                var excessiveThirst = $("input[name='custrecord_dsq_thirst']:checked").val();
+                var excessiveFoodIntake = $("input[name='custrecord_dsq_foodintake']:checked").val();
+                var excessiveSweat = $("input[name='custrecord_dsq_excessive_sweat']:checked").val();
+                var desireForCold = $("input[name='custrecord_dsq_desire_for_cold']:checked").val();
+                var badBreath = $("input[name='custrecord_dsq_bad_breath']:checked").val();
+                var fastHairNailGrowth = $("input[name='custrecord_dsq_fast_growth']:checked").val();
+                var bodyHeaviness = $("input[name='custrecord_dsq_lethargy']:checked").val();
+                var stickyKnottyHair = $("input[name='custrecord_dsq_sticky_hair']:checked").val();
+                var stickinessInBody = $("input[name='custrecord_dsq_stickiness_eyes']:checked").val();
+                var bodyLooseness = $("input[name='custrecord_dsq_looseness']:checked").val();
+                var unexplainedWeightChange = $("input[name='custrecord_dsq_weightloss']:checked").val();
+                var numbnessHandsSoles = $("input[name='custrecord_dsq_num_palm']:checked").val();
+                var numbnessWholeBody = $("input[name='custrecord_dsq_numb_whole']:checked").val();
+                var nonHealingWoundUlcer = $("input[name='custrecord_dsq_nonheal']:checked").val();
+
+                var submitjson = {
+                    firstName: firstName,
+                    lastName: lastName,
+                    prospectName: prospectName,
+                    gender: gender,
+                    age: age,
+                    phoneNumber: phoneNumber,
+                    emailAddress: emailAddress,
+                    areYouDiabetic: areYouDiabetic,
+                    waistCircumference: waistCircumference,
+                    familyHistory: familyHistory,
+                    physicalActivity: physicalActivity,
+                    excessFoodIntake: excessFoodIntake,
+                    foodType: foodType,
+                    diagnosedbp: diagnosedbp,
+                    diagnosedht: diagnosedht,
+                    diagnosedpcod: diagnosedpcod,
+                    diagnosedhypo: diagnosedhypo,
+                    diagnosedigt: diagnosedigt,
+                    steroids: steroids,
+                    diagnosedmeno: diagnosedmeno,
+                    diabetesType: diabetesType,
+                    ageOfDiagnosis: ageOfDiagnosis,
+                    currentMedication: currentMedication,
+                    otherMedication: otherMedication,
+                    satisfaction: satisfaction,
+                    currentHbA1CScore: currentHbA1CScore,
+                    currentFBSScore: currentFBSScore,
+                    difficultiesFaced: difficultiesFaced,
+                    otherDifficulties: otherDifficulties,
+                    otherIschecked: otherIschecked,
+                    tiredness: tiredness,
+                    mentalDullness: mentalDullness,
+                    desireToSit: desireToSit,
+                    urineTurbidity: urineTurbidity,
+                    urineColor: urineColor,
+                    urineQuantity: urineQuantity,
+                    urineHistory: urineHistory,
+                    urineFrequency: urineFrequency,
+                    sweetTaste: sweetTaste,
+                    bodyOdor: bodyOdor,
+                    mouthDryness: mouthDryness,
+                    burningSensation: burningSensation,
+                    excessiveThirst: excessiveThirst,
+                    excessiveFoodIntake: excessiveFoodIntake,
+                    excessiveSweat: excessiveSweat,
+                    desireForCold: desireForCold,
+                    badBreath: badBreath,
+                    fastHairNailGrowth: fastHairNailGrowth,
+                    bodyHeaviness: bodyHeaviness,
+                    stickyKnottyHair: stickyKnottyHair,
+                    stickinessInBody: stickinessInBody,
+                    bodyLooseness: bodyLooseness,
+                    unexplainedWeightChange: unexplainedWeightChange,
+                    numbnessHandsSoles: numbnessHandsSoles,
+                    numbnessWholeBody: numbnessWholeBody,
+                    nonHealingWoundUlcer: nonHealingWoundUlcer
+                };
+
+                var dsqRequestjson = JSON.stringify(submitjson);
+
+                console.log(dsqRequestjson);
+
+
+
+                // Define the OAuth 1.0 credentials
+                // var consumerKey = '61e349090da37446c5684e1c2679eade484d1fe602ca6e183d02fd138045d982';
+                // var consumerSecret = '33c61b52739bfa6dc5a84294f5b8aec7f39963a31541f6afeb944c8bc69482cf';
+                // var token = '94f0d102f82aeda7c76a90a8d0dfb02441e5c5aa4e830c22ec53ab5567b10e13';
+                // var tokenSecret = '8884c66e9902c754b0e1f588f9809bf87827d87d5a217c87804a5bc01faf7bc9';
+
+                // Set the endpoint URL of your Restlet
+                // var restletUrl = 'https://3373505.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=225&deploy=1';
+
+                // Generate the OAuth 1.0 signature
+                // var timestamp = Math.floor(Date.now() / 1000);
+                // var nonce = generateNonce();
+                // var signature = generateOAuthSignature(restletUrl, 'GET', timestamp, nonce);
+
+                // Construct the Authorization header
+                // var authorizationHeader = 'OAuth ' +
+                //     'oauth_consumer_key="' + consumerKey + '", ' +
+                //     'oauth_token="' + token + '", ' +
+                //     'oauth_signature_method="HMAC-SHA1", ' +
+                //     'oauth_timestamp="' + timestamp + '", ' +
+                //     'oauth_nonce="' + nonce + '", ' +
+                //     'oauth_version="1.0", ' +
+                //     'oauth_signature="' + signature + '"';
+
+                // Make the AJAX request
+                // $.ajax({
+                //     url: restletUrl,
+                //     method: 'GET',
+                //     headers: {
+                //         'Authorization': authorizationHeader
+                //     },
+                //     success: function (response) {
+                //         // Handle the response from the Restlet
+                //         console.log(response);
+                //     },
+                //     error: function (xhr, status, error) {
+                //         // Handle the error if the request fails
+                //         console.error(error);
+                //     }
+                // });
+
+                // Function to generate a random nonce
+                // function generateNonce() {
+                //     // Implement your own logic to generate a random string
+                //     // This is just a simple example
+                //     return Math.random().toString(36).substring(2);
+                // }
+
+                // // Function to generate the OAuth 1.0 signature
+                // function generateOAuthSignature(url, method, timestamp, nonce) {
+                //     // Implement your own logic to generate the OAuth signature
+                //     // This involves combining and hashing various components using your consumer secret and token secret
+                //     // There are libraries available (such as oauth-1.0a) that can assist in generating the signature
+                //     // Here's an example of generating the signature manually (not recommended for production use):
+                //     var signatureBaseString = method.toUpperCase() + '&' + encodeURIComponent(url) + '&' +
+                //         encodeURIComponent('oauth_consumer_key=' + consumerKey + '&' +
+                //             'oauth_nonce=' + nonce + '&' +
+                //             'oauth_signature_method=HMAC-SHA1&' +
+                //             'oauth_timestamp=' + timestamp + '&' +
+                //             'oauth_token=' + token + '&' +
+                //             'oauth_version=1.0');
+
+                //     var signingKey = encodeURIComponent(consumerSecret) + '&' + encodeURIComponent(tokenSecret);
+                //     var signature = CryptoJS.HmacSHA1(signatureBaseString, signingKey);
+                //     return signature.toString(CryptoJS.enc.Base64);
+                // }
+
+
+                // var consumerKey = '61e349090da37446c5684e1c2679eade484d1fe602ca6e183d02fd138045d982';
+                // var consumerSecret = '33c61b52739bfa6dc5a84294f5b8aec7f39963a31541f6afeb944c8bc69482cf';
+                // var token = '94f0d102f82aeda7c76a90a8d0dfb02441e5c5aa4e830c22ec53ab5567b10e13';
+                // var tokenSecret = '8884c66e9902c754b0e1f588f9809bf87827d87d5a217c87804a5bc01faf7bc9';
+
+                // Set the endpoint URL of your Restlet
+                // var restletUrl = 'https://3373505.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=225&deploy=1';
+
+                // Step 1: Gather the required parameters
+                var consumerKey = '61e349090da37446c5684e1c2679eade484d1fe602ca6e183d02fd138045d982';
+                var consumerSecret = '33c61b52739bfa6dc5a84294f5b8aec7f39963a31541f6afeb944c8bc69482cf';
+                var tokenID = '94f0d102f82aeda7c76a90a8d0dfb02441e5c5aa4e830c22ec53ab5567b10e13';
+                var tokenSecret = '8884c66e9902c754b0e1f588f9809bf87827d87d5a217c87804a5bc01faf7bc9';
+                var httpMethod = 'GET';
+                var baseURL = 'https://3373505.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=225&deploy=1';
+                // var requestParams = 'name=ABC';
+
+                // Step 2: Construct the Signature Base String
+                var encodedBaseURL = encodeURIComponent(baseURL);
+                // var encodedParams = encodeURIComponent(requestParams);
+                var signatureBaseString = httpMethod + '&' + encodedBaseURL;//+ '&' + encodedParams;
+
+                // Step 3: Generate the Signing Key
+                var signingKey = consumerSecret + '&' + tokenSecret;
+
+                // Step 4: Generate the Signature
+                var signature = CryptoJS.HmacSHA1(signatureBaseString, signingKey).toString(CryptoJS.enc.Base64);
+
+                // Step 5: Construct the Authorization Header
+                var authorizationHeader = 'OAuth realm="", oauth_consumer_key="' + consumerKey + '", oauth_token="' + tokenID + '", oauth_signature_method="HMAC-SHA1", oauth_timestamp="' + Math.floor(Date.now() / 1000) + '", oauth_nonce="' + generateNonce() + '", oauth_version="1.0", oauth_signature="' + signature + '"';
+
+                // Step 6: Make the AJAX request
+                $.ajax({
+                    url: baseURL, //+ '?' + requestParams,
+                    type: httpMethod,
                     headers: {
-                        'Access-Control-Allow-Origin': '*', // Replace with your domain
-                        'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
-                        'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
+                        'Authorization': authorizationHeader
+                    },
+                    success: function (response) {
+                        // Handle the response
+                        console.log(response);
+                    },
+                    error: function (xhr, status, error) {
+                        // Handle the error
+                        console.log(error);
                     }
                 });
 
-                $('#dsqentryform').submit(function (event) {
-                    event.preventDefault(); // Prevent the default form submission
-                    console.log('dsqentryform Started');
+                // Helper function to generate a random nonce
+                function generateNonce() {
+                    return Math.random().toString(36).substring(2);
+                }
 
 
-                    var firstName = $("#custrecord_dsq_first_name").val();
-                    var lastName = $("#custrecord_dsq_last_name").val();
-                    var prospectName = firstName + " " + lastName;
-                    var dateOfBirth = $("#custrecord_dsq_dob").val();
-                    var age = $("#custrecord_dsq_age").val();
-                    var gender = $("input[name='custrecord_dsq_gender']:checked").val();
-                    var phoneNumber = $("#custrecord_dsq_mobile").val();
-                    var emailAddress = $("#custrecord_dsq_email").val();
-                    var areYouDiabetic = $("input[name='custrecord_dsq_diabetic_check']:checked").val();
-
-                    var waistCircumference = $('input[name="custrecord_waist_circumference"]:checked').val();
-                    var familyHistory = $('input[name="custrecord_family_history"]:checked').val();
-                    var physicalActivity = $('input[name="custrecord_physical_activity"]:checked').val();
-                    var excessFoodIntake = $('input[name="custrecord_excess_food_intake"]:checked').val();
-                    var foodType = $('input[name="custrecord_dsq_food_type"]:checked').val();                                // validation for Risk 2 section
-                    var diagnosedbp = $('input[name="custrecord_diagnosedbp"]:checked').val();
-                    var diagnosedht = $('input[name="custrecord_diagnosedht"]:checked').val();
-                    var diagnosedpcod = $('input[name="custrecord_diagnosedpcod"]:checked').val();
-                    var diagnosedhypo = $('input[name="custrecord_diagnosedhypo"]:checked').val();
-                    var diagnosedigt = $('input[name="custrecord_diagnosedigt"]:checked').val();
-                    var steroids = $('input[name="custrecord_steroids"]:checked').val();
-                    var diagnosedmeno = $('input[name="custrecord_diagnosedmeno"]:checked').val();
-
-                    var diabetesType = $("input[name='custrecord_dsq_summary']:checked").val();
-                    var ageOfDiagnosis = $("#custrecord_age_of_diagnosis").val();
-                    var currentMedication = $("input[name='custrecord_currentmedication']:checked").map(function () {
-                        return $(this).val();
-                    }).get();
-                    console.log("currentMedication: " +currentMedication);
-                    //var currentMedication = $("input[name='custrecord_currentmedication']:checked").length > 0;
-                    var otherMedication = $("#custrecord_othermedication").val();
-                    var satisfaction = $("input[name='custrecord_dsq_satisfaction']:checked").val();
-                    var currentHbA1CScore = $("#custrecord_current_hba1c_score").val();
-                    var currentFBSScore = $("#custrecord5").val();
-                    var difficultiesFaced = $("input[name='custrecord72']:checked").map(function () {
-                        return $(this).val();
-                    }).get();
-                    console.log('difficultiesFaced' + difficultiesFaced);
-                    //var difficultiesFaced = $("input[name='custrecord72']:checked").length > 0;
-                    var otherDifficulties = $("#custrecord_otherdifficulties").val();
-                    var otherIschecked = $("#otherCheckbox").is(":checked");
-                    
-                    var tiredness = $("input[name='custrecord_tiredness']:checked").val();
-                    var mentalDullness = $("input[name='custrecord_dsq_lethargy_mental']:checked").val();
-                    var desireToSit = $("input[name='custrecord_dsq_laziness']:checked").val();
-                    var urineTurbidity = $("input[name='custrecord_dsq_urine_turbid']:checked").val();
-                    var urineColor = $("input[name='custrecord_dsq_urine_color']:checked").val();
-                    var urineQuantity = $("input[name='custrecord_dsq_urine_quantity']:checked").val();
-                    var urineHistory = $("input[name='custrecord_dsq_urine_history']:checked").val();
-                    var urineFrequency = $("input[name='custrecord_dsq_frequency_unrine']:checked").val();
-                    var sweetTaste = $("input[name='custrecord_dsq_sweet_taste_in_mouth']:checked").val();
-                    var bodyOdor = $("input[name='custrecord_dsq_body_odour']:checked").val();
-                    var mouthDryness = $("input[name='custrecord_mouth_dryness']:checked").val();
-                    var burningSensation = $("input[name='custrecord_dsq_burning_sensation']:checked").val();
-                    var excessiveThirst = $("input[name='custrecord_dsq_thirst']:checked").val();
-                    var excessiveFoodIntake = $("input[name='custrecord_dsq_foodintake']:checked").val();
-                    var excessiveSweat = $("input[name='custrecord_dsq_excessive_sweat']:checked").val();
-                    var desireForCold = $("input[name='custrecord_dsq_desire_for_cold']:checked").val();
-                    var badBreath = $("input[name='custrecord_dsq_bad_breath']:checked").val();
-                    var fastHairNailGrowth = $("input[name='custrecord_dsq_fast_growth']:checked").val();
-                    var bodyHeaviness = $("input[name='custrecord_dsq_lethargy']:checked").val();
-                    var stickyKnottyHair = $("input[name='custrecord_dsq_sticky_hair']:checked").val();
-                    var stickinessInBody = $("input[name='custrecord_dsq_stickiness_eyes']:checked").val();
-                    var bodyLooseness = $("input[name='custrecord_dsq_looseness']:checked").val();
-                    var unexplainedWeightChange = $("input[name='custrecord_dsq_weightloss']:checked").val();
-                    var numbnessHandsSoles = $("input[name='custrecord_dsq_num_palm']:checked").val();
-                    var numbnessWholeBody = $("input[name='custrecord_dsq_numb_whole']:checked").val();
-                    var nonHealingWoundUlcer = $("input[name='custrecord_dsq_nonheal']:checked").val();
-
-                    var submitjson = {
-                        firstName: firstName,
-                        lastName: lastName,
-                        prospectName: prospectName,
-                        gender: gender,
-                        age: age,
-                        phoneNumber: phoneNumber,
-                        emailAddress: emailAddress,
-                        areYouDiabetic: areYouDiabetic,
-                        waistCircumference: waistCircumference,
-                        familyHistory: familyHistory,
-                        physicalActivity: physicalActivity,
-                        excessFoodIntake: excessFoodIntake,
-                        foodType: foodType,
-                        diagnosedbp: diagnosedbp,
-                        diagnosedht: diagnosedht,
-                        diagnosedpcod: diagnosedpcod,
-                        diagnosedhypo: diagnosedhypo,
-                        diagnosedigt: diagnosedigt,
-                        steroids: steroids,
-                        diagnosedmeno: diagnosedmeno,
-                        diabetesType: diabetesType,
-                        ageOfDiagnosis: ageOfDiagnosis,
-                        currentMedication: currentMedication,
-                        otherMedication: otherMedication,
-                        satisfaction: satisfaction,
-                        currentHbA1CScore: currentHbA1CScore,
-                        currentFBSScore: currentFBSScore,
-                        difficultiesFaced: difficultiesFaced,
-                        otherDifficulties: otherDifficulties,
-                        otherIschecked: otherIschecked,
-                        tiredness: tiredness,
-                        mentalDullness: mentalDullness,
-                        desireToSit: desireToSit,
-                        urineTurbidity: urineTurbidity,
-                        urineColor: urineColor,
-                        urineQuantity: urineQuantity,
-                        urineHistory: urineHistory,
-                        urineFrequency: urineFrequency,
-                        sweetTaste: sweetTaste,
-                        bodyOdor: bodyOdor,
-                        mouthDryness: mouthDryness,
-                        burningSensation: burningSensation,
-                        excessiveThirst: excessiveThirst,
-                        excessiveFoodIntake: excessiveFoodIntake,
-                        excessiveSweat: excessiveSweat,
-                        desireForCold: desireForCold,
-                        badBreath: badBreath,
-                        fastHairNailGrowth: fastHairNailGrowth,
-                        bodyHeaviness: bodyHeaviness,
-                        stickyKnottyHair: stickyKnottyHair,
-                        stickinessInBody: stickinessInBody,
-                        bodyLooseness: bodyLooseness,
-                        unexplainedWeightChange: unexplainedWeightChange,
-                        numbnessHandsSoles: numbnessHandsSoles,
-                        numbnessWholeBody: numbnessWholeBody,
-                        nonHealingWoundUlcer: nonHealingWoundUlcer
-                    };
-
-                    var dsqRequestjson = JSON.stringify(submitjson);
-
-                    console.log(dsqRequestjson);
-
-                    const serverUrl = 'https://sandbox-portal.priano.com:8080/priano_api/postExternalData';
-                    
-                    jQuery.ajax({
-                        url: serverUrl,
-                        type: "POST",
-                        crossDomain: true,
-                        data: dsqRequestjson,
-                        mode: 'cors',
-                        contentType: "application/json",
-
-                    })
-                        .done(function (data) {
-                            console.log(data);
-                            $("#response").text(JSON.stringify(data));
-                        });
-
-                });
+            });
         });
 
 
     </script>
+    <script src="CryptoJS v3.1.2/rollups/hmac-sha1.js"></script>
+    <script src="CryptoJS v3.1.2/components/enc-base64-min.js"></script>
 
     </div>
 
