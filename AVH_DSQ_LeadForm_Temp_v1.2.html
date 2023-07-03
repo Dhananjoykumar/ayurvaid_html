@@ -1244,7 +1244,7 @@
 
 
     </div>
-    <script src="/oauth-1.0a.js"></script>
+    
     <script type="text/javascript">
 
         $(document).ready(function () {
@@ -1395,137 +1395,28 @@
 
                 console.log(dsqRequestjson);
 
+                const serverUrl = 'https://sandbox-portal.priano.com:8080/priano_api/postExternalData';
 
+                jQuery.ajax({
+                    url: serverUrl,
+                    type: "POST",
+                    crossDomain: true,
+                    data: dsqRequestjson,
+                    mode: 'cors',
+                    contentType: "application/json",
 
-                // Define the OAuth 1.0 credentials
-                // var consumerKey = '61e349090da37446c5684e1c2679eade484d1fe602ca6e183d02fd138045d982';
-                // var consumerSecret = '33c61b52739bfa6dc5a84294f5b8aec7f39963a31541f6afeb944c8bc69482cf';
-                // var token = '94f0d102f82aeda7c76a90a8d0dfb02441e5c5aa4e830c22ec53ab5567b10e13';
-                // var tokenSecret = '8884c66e9902c754b0e1f588f9809bf87827d87d5a217c87804a5bc01faf7bc9';
-
-                // Set the endpoint URL of your Restlet
-                // var restletUrl = 'https://3373505.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=225&deploy=1';
-
-                // Generate the OAuth 1.0 signature
-                // var timestamp = Math.floor(Date.now() / 1000);
-                // var nonce = generateNonce();
-                // var signature = generateOAuthSignature(restletUrl, 'GET', timestamp, nonce);
-
-                // Construct the Authorization header
-                // var authorizationHeader = 'OAuth ' +
-                //     'oauth_consumer_key="' + consumerKey + '", ' +
-                //     'oauth_token="' + token + '", ' +
-                //     'oauth_signature_method="HMAC-SHA1", ' +
-                //     'oauth_timestamp="' + timestamp + '", ' +
-                //     'oauth_nonce="' + nonce + '", ' +
-                //     'oauth_version="1.0", ' +
-                //     'oauth_signature="' + signature + '"';
-
-                // Make the AJAX request
-                // $.ajax({
-                //     url: restletUrl,
-                //     method: 'GET',
-                //     headers: {
-                //         'Authorization': authorizationHeader
-                //     },
-                //     success: function (response) {
-                //         // Handle the response from the Restlet
-                //         console.log(response);
-                //     },
-                //     error: function (xhr, status, error) {
-                //         // Handle the error if the request fails
-                //         console.error(error);
-                //     }
-                // });
-
-                // Function to generate a random nonce
-                // function generateNonce() {
-                //     // Implement your own logic to generate a random string
-                //     // This is just a simple example
-                //     return Math.random().toString(36).substring(2);
-                // }
-
-                // // Function to generate the OAuth 1.0 signature
-                // function generateOAuthSignature(url, method, timestamp, nonce) {
-                //     // Implement your own logic to generate the OAuth signature
-                //     // This involves combining and hashing various components using your consumer secret and token secret
-                //     // There are libraries available (such as oauth-1.0a) that can assist in generating the signature
-                //     // Here's an example of generating the signature manually (not recommended for production use):
-                //     var signatureBaseString = method.toUpperCase() + '&' + encodeURIComponent(url) + '&' +
-                //         encodeURIComponent('oauth_consumer_key=' + consumerKey + '&' +
-                //             'oauth_nonce=' + nonce + '&' +
-                //             'oauth_signature_method=HMAC-SHA1&' +
-                //             'oauth_timestamp=' + timestamp + '&' +
-                //             'oauth_token=' + token + '&' +
-                //             'oauth_version=1.0');
-
-                //     var signingKey = encodeURIComponent(consumerSecret) + '&' + encodeURIComponent(tokenSecret);
-                //     var signature = CryptoJS.HmacSHA1(signatureBaseString, signingKey);
-                //     return signature.toString(CryptoJS.enc.Base64);
-                // }
-
-
-                // var consumerKey = '61e349090da37446c5684e1c2679eade484d1fe602ca6e183d02fd138045d982';
-                // var consumerSecret = '33c61b52739bfa6dc5a84294f5b8aec7f39963a31541f6afeb944c8bc69482cf';
-                // var token = '94f0d102f82aeda7c76a90a8d0dfb02441e5c5aa4e830c22ec53ab5567b10e13';
-                // var tokenSecret = '8884c66e9902c754b0e1f588f9809bf87827d87d5a217c87804a5bc01faf7bc9';
-
-                // Set the endpoint URL of your Restlet
-                // var restletUrl = 'https://3373505.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=225&deploy=1';
-
-                // Step 1: Gather the required parameters
-                var consumerKey = '61e349090da37446c5684e1c2679eade484d1fe602ca6e183d02fd138045d982';
-                var consumerSecret = '33c61b52739bfa6dc5a84294f5b8aec7f39963a31541f6afeb944c8bc69482cf';
-                var tokenID = '94f0d102f82aeda7c76a90a8d0dfb02441e5c5aa4e830c22ec53ab5567b10e13';
-                var tokenSecret = '8884c66e9902c754b0e1f588f9809bf87827d87d5a217c87804a5bc01faf7bc9';
-                var httpMethod = 'GET';
-                var baseURL = 'https://3373505.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=225&deploy=1';
-                // var requestParams = 'name=ABC';
-
-                // Step 2: Construct the Signature Base String
-                var encodedBaseURL = encodeURIComponent(baseURL);
-                // var encodedParams = encodeURIComponent(requestParams);
-                var signatureBaseString = httpMethod + '&' + encodedBaseURL;//+ '&' + encodedParams;
-
-                // Step 3: Generate the Signing Key
-                var signingKey = consumerSecret + '&' + tokenSecret;
-
-                // Step 4: Generate the Signature
-                var signature = CryptoJS.HmacSHA1(signatureBaseString, signingKey).toString(CryptoJS.enc.Base64);
-
-                // Step 5: Construct the Authorization Header
-                var authorizationHeader = 'OAuth realm="", oauth_consumer_key="' + consumerKey + '", oauth_token="' + tokenID + '", oauth_signature_method="HMAC-SHA1", oauth_timestamp="' + Math.floor(Date.now() / 1000) + '", oauth_nonce="' + generateNonce() + '", oauth_version="1.0", oauth_signature="' + signature + '"';
-
-                // Step 6: Make the AJAX request
-                $.ajax({
-                    url: baseURL, //+ '?' + requestParams,
-                    type: httpMethod,
-                    headers: {
-                        'Authorization': authorizationHeader
-                    },
-                    success: function (response) {
-                        // Handle the response
-                        console.log(response);
-                    },
-                    error: function (xhr, status, error) {
-                        // Handle the error
-                        console.log(error);
-                    }
-                });
-
-                // Helper function to generate a random nonce
-                function generateNonce() {
-                    return Math.random().toString(36).substring(2);
-                }
-
-
+                })
+                    .done(function (data) {
+                        console.log(JSON.stringify(data));
+                        $("#response").text(JSON.stringify(data));
+                        alert(JSON.stringify(data));
+                    });
+                
             });
         });
 
 
     </script>
-    <script src="/CryptoJS v3.1.2/rollups/hmac-sha1.js"></script>
-    <script src="/CryptoJS v3.1.2/components/enc-base64-min.js"></script>
 
     </div>
 
